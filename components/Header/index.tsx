@@ -3,14 +3,12 @@ import {View, Image, Text, StyleSheet} from 'react-native';
 
 const Header = (props: HeaderProps) => {
 
-  
-
     return (
       <View style={styles.container}>
         <View></View>
         <Text style={{color: '#fff', fontSize:40}}>Trivia Quiz</Text>
         <Image
-          source={props.avatar}
+          source={props.avatar as any}
           style={{ width: 100, height: 100, borderRadius: 50 }}
         />
       </View>
