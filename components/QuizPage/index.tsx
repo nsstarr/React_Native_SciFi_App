@@ -4,26 +4,14 @@ import Header from '../Header'
 import QuizAnswer from '../QuizAnswer'
 import QuizQuestion from '../QuizQuestion'
 import QuizPicture from '../QuizPicture'
-import {images, GetImage} from "../../utilities/images"
+import {questionsData, GetImage} from "../../utilities/QuestionsData"
 import RadioGroup, {RadioButtonProps } from 'react-native-radio-buttons-group'
 
 
 const QuizPage = () => {
-
-    let answersData: RadioButtonProps[] = [
-        {id: '1',
-        value: "1",
-        label: "Option 1"},
-        {id: '2',
-        value: "2",
-        label: "Option 2"},
-        {id: '3',
-        value: "3",
-        label: "Option 3"},
-        {id: '4',
-        value: "4",
-        label: "Option 4"},
-    ]
+    const [questionNumber, setQuestionNumber] = useState(1)
+    let answersData: RadioButtonProps[] = questionsData[questionNumber].answers!
+   
 
     const [answers, setAnswers] = useState<RadioButtonProps[]>(answersData)
 
@@ -31,13 +19,13 @@ const QuizPage = () => {
         setAnswers(radioButtonsArray);
     }
 
-    const yoda = GetImage(`image${2}`)
+    const yoda = GetImage(`image${questionNumber}`)
     return (
         <View>
             <Header/>
             <View style={styles.pictureContainer}>
                 <QuizPicture source={ yoda}/>
-                <QuizQuestion question="Who is this character?" />
+                <QuizQuestion question={questionsData[questionNumber].question!} />
                 <RadioGroup radioButtons={answers}/>
             </View>
         </View>

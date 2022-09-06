@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, ScrollView } from "react-native";
 import Header from "../Header";
 import QuizCategoryCard from "../QuizCategoryCard";
-import { images, GetImage} from '../../utilities/images'
+import { images, GetImage} from '../../utilities/QuestionsData'
 
 const HomeScreen = () => {
 
