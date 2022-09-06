@@ -3,6 +3,7 @@ import {View, Image, Text, StyleSheet} from 'react-native';
 
 const Header = (props: HeaderProps) => {
 
+  
 
     return (
       <View style={styles.container}>

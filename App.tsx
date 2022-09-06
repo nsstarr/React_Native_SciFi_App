@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header';
+import HomeScreen from './components/HomeScreen';
 import QuizAnswer from './components/QuizAnswer';
 
 export default function App() {
@@ -10,10 +11,11 @@ export default function App() {
   }
   return (
     <View style={styles.container}>
-      <Header avatar={slides.avatar}></Header>
+      {/* <Header avatar={slides.avatar}></Header>
       <QuizAnswer answer="Hello World" />
       <QuizAnswer answer="How are you doing?" />
-      <StatusBar style="auto" />
+      <StatusBar style="auto" /> */}
+      <HomeScreen />
     </View>
   );
 }
