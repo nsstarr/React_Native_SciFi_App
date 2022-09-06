@@ -28,6 +28,18 @@ export const questionsData: Array<Questions> = [
       { id: "4", value: "Yoda", label: "Yoda" },
     ],
   },
+  {
+    name: "image2",
+    image: require("../assets/EndersGame.jpg"),
+    description: "Movie Poster of Ender's game",
+    question: "In battle School, Ender takes command of his own army, what is the name of the army?",
+    answers: [
+      { id: "1", value: "Salamander", label: "Salamander" },
+      { id: "2", value: "Dragon", label: "Dragon" },
+      { id: "3", value: "Griffin", label: "Griffin" },
+      { id: "4", value: "Tiger", label: "Tiger" },
+    ],
+  },
 ];
 
 export const GetImage = (name: string) => {
