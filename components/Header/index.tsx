@@ -16,7 +16,7 @@ const Header = (props: HeaderProps) => {
 }
 
 type HeaderProps = {
-    avatar: string, 
+    avatar?: string, 
 }
 
 const styles = StyleSheet.create({

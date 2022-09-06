@@ -6,10 +6,15 @@ interface Image {
 
 export const images: Array<Image> = [
     {
-        name: 'image1.png',
+        name: 'image1',
         image: require('../assets/profile_picture.png'),
         description: 'Default Profile Image'
-    }
+    },
+    {
+        name: 'image2',
+        image: require('../assets/Yoda.jpg'),
+        description: 'Picture of Yoda'
+    },
 ]
 
 export const GetImage = (name: string) => {

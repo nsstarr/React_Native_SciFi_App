@@ -10,7 +10,7 @@ const HomeScreen = () => {
 //     avatar: require("../../assets/profile_picture.png")
 //   }
 
-  const avatar = GetImage(`image${1}.png`)
+  const avatar = GetImage(`image${1}`)
   console.log(avatar);
   return (
     <View>

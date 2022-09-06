@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header';
 import HomeScreen from './components/HomeScreen';
-import QuizAnswer from './components/QuizAnswer';
+import QuizPage from './components/QuizPage';
 
 export default function App() {
 
@@ -15,7 +15,8 @@ export default function App() {
       <QuizAnswer answer="Hello World" />
       <QuizAnswer answer="How are you doing?" />
       <StatusBar style="auto" /> */}
-      <HomeScreen />
+      {/* <HomeScreen /> */}
+      <QuizPage />
     </View>
   );
 }
