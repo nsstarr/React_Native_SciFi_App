@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import QuizAnswer from './components/QuizAnswer';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Hello World</Text>
+      <QuizAnswer answer="Hello World"/>
+      <QuizAnswer answer="How are you doing?"/>
       <StatusBar style="auto" />
     </View>
   );
