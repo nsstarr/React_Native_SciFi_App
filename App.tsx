@@ -4,9 +4,13 @@ import Header from './components/Header';
 import QuizAnswer from './components/QuizAnswer';
 
 export default function App() {
+
+  const slides = {
+    avatar: require("./assets/profile_picture.png")
+  }
   return (
     <View style={styles.container}>
-      <Header source="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"></Header>
+      <Header avatar={slides.avatar}></Header>
       <QuizAnswer answer="Hello World" />
       <QuizAnswer answer="How are you doing?" />
       <StatusBar style="auto" />
@@ -16,9 +20,10 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // flexDirection: 'column',
+    // backgroundColor: '#fff',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    // margin:'auto',
   },
 });
