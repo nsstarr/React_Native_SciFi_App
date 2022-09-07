@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Header from './components/Header';
 import HomeScreen from './components/HomeScreen';
 import QuizPage from './components/QuizPage';
+import ResultsPage from './components/ResultsPage';
 
 export default function App() {
 
@@ -16,7 +17,8 @@ export default function App() {
       <QuizAnswer answer="How are you doing?" />
       <StatusBar style="auto" /> */}
       {/* <HomeScreen /> */}
-      <QuizPage />
+      {/* <QuizPage /> */}
+      <ResultsPage />
     </View>
   );
 }
