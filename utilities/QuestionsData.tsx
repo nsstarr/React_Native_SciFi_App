@@ -13,14 +13,9 @@ interface Questions {
 export const questionsData: Array<Questions> = [
   {
     name: "image0",
-    image: require("../assets/profile_picture.png"),
-    description: "Default Profile Image",
-  },
-  {
-    name: "image1",
     image: require("../assets/Yoda.jpg"),
     description: "Picture of Yoda",
-    question: "Who is this charatcter?",
+    question: "Who is this character?",
     answers: [
       { id: "1", value: "Picard", label: "Picard" },
       { id: "2", value: "Chewbacca", label: "Chewbacca" },
@@ -29,7 +24,7 @@ export const questionsData: Array<Questions> = [
     ],
   },
   {
-    name: "image2",
+    name: "image1",
     image: require("../assets/EndersGame.jpg"),
     description: "Movie Poster of Ender's game",
     question: "In battle School, Ender takes command of his own army, what is the name of the army?",
@@ -41,7 +36,7 @@ export const questionsData: Array<Questions> = [
     ],
   },
   {
-    name: "image3",
+    name: "image2",
     image: require("../assets/BladeRunner.jpg"),
     description: "Blade Runner Aesthetics",
     question: "What city is Blade Runner set in?",
@@ -53,7 +48,7 @@ export const questionsData: Array<Questions> = [
     ],
   },
   {
-    name: "image4",
+    name: "image3",
     image: require("../assets/Serenity.jpg"),
     description: "Serenity Ship",
     question: "In the TV-show Firefly, what is the Serenity named after?",
@@ -65,7 +60,7 @@ export const questionsData: Array<Questions> = [
     ],
   },
   {
-    name: "image5",
+    name: "image4",
     image: require("../assets/ETMoon.jpg"),
     description: " Poster of E.T.",
     question: "What's the the name of the boy who find and befriends E.T.?",
@@ -76,9 +71,17 @@ export const questionsData: Array<Questions> = [
       { id: "4", value: "Dennis", label: "Dennis" },
     ],
   },
+  {
+    name: "image5",
+    image: require("../assets/Matrix.jpg"),
+    description: "Scene from the Matrix.",
+    question: "In the Matrix Trilogy, machines kept humans inside the Matrix, for what purpose?",
+    answers: [
+      { id: "1", value: "To use as Batteries", label: "To use as Batteries" },
+      { id: "2", value: "To use as a Neural Network", label: "To use as a Neural Network" },
+      { id: "3", value: "To research Human behaviour", label: "To research Human behaviour" },
+      { id: "4", value: "To punish Humans", label: "To punish Humans" },
+    ],
+  },
 ];
 
-export const GetImage = (name: string) => {
-    const found = questionsData.find(image => image.name === name);
-    return found ? found.image : null;
-}

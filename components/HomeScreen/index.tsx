@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, ScrollView } from "react-native";
 import Header from "../Header";
 import QuizCategoryCard from "../QuizCategoryCard";
-import { questionsData, GetImage} from '../../utilities/QuestionsData'
+import {images, GetImage} from "../../utilities/images"
 
 const HomeScreen = () => {
 
@@ -10,7 +10,7 @@ const HomeScreen = () => {
 //     avatar: require("../../assets/profile_picture.png")
 //   }
 
-  const avatar = GetImage(`image${0}`)
+  const avatar = GetImage(`image${0}`,images)
   console.log(avatar);
   return (
     <View>
