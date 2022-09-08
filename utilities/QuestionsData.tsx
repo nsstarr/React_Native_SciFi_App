@@ -83,17 +83,5 @@ export const questionsData: Array<Questions> = [
       { id: "4", value: "To punish Humans", label: "To punish Humans" },
     ],
   },
-  {
-    name: "image5",
-    image: require("../assets/Matrix.jpg"),
-    description: "Scene from the Matrix.",
-    question: "In the Matrix Trilogy, machines kept humans inside the Matrix, for what purpose?",
-    answers: [
-      { id: "1", value: "To use as Batteries", label: "To use as Batteries" },
-      { id: "2", value: "To use as a Neural Network", label: "To use as a Neural Network" },
-      { id: "3", value: "To research Human behaviour", label: "To research Human behaviour" },
-      { id: "4", value: "To punish Humans", label: "To punish Humans" },
-    ],
-  },
 ];
 

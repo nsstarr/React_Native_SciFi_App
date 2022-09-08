@@ -48,6 +48,10 @@ const QuizPage = ({ navigation }: Props) => {
 
   const yoda = GetImage(`image${questionNumber}`, questionsData)!;
 
+
+  
+
+
   if (questionNumber >= questionsData.length - 1) {
     return (
       <View>
@@ -66,10 +70,11 @@ const QuizPage = ({ navigation }: Props) => {
     //     <Header />
         <Swiper>
 
-          {questionsData.map((question, key) => {
+          {[...questionsData.map((question, key) => {
             
             return (
-              <View style={styles.pictureContainer} key = {key}>
+              <View style={styles.pictureContainer} key = {question.name}>
+                <Header />
                 <QuizPicture source={question.image} />
                 <QuizQuestion
                   question={question.question!}
@@ -82,7 +87,18 @@ const QuizPage = ({ navigation }: Props) => {
                 <Button onPress={checkAnswers} title="Check"></Button>
               </View>
             );
-          })}
+          }),
+          <View key="image6">
+            <Header />
+        <Text>You finished the quiz, press the button to see your results</Text>
+        <Button
+          title="To Results"
+          onPress={() => {
+            navigation.navigate("ResultsPage");
+          }}
+        ></Button>
+      </View>
+      ]}
         </Swiper>
     //   </View>
     );
