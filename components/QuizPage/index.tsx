@@ -6,7 +6,7 @@ import QuizQuestion from "../QuizQuestion";
 import QuizPicture from "../QuizPicture";
 import { questionsData } from "../../utilities/QuestionsData";
 import { GetImage } from "../../utilities/images";
-import RadioGroup, { RadioButtonProps } from "react-native-radio-buttons-group";
+import RadioGroup from "react-native-radio-buttons-group";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import Swiper from "react-native-swiper";
 type StackTypes = {
@@ -15,18 +15,36 @@ type StackTypes = {
   ResultsPage: undefined;
 };
 
+export type RadioButtonProps = {
+  borderColor?: string;
+  color?: string;
+  containerStyle?: object;
+  description?: string;
+  descriptionStyle?: object;
+  disabled?: boolean;
+  id: string;
+  label?: string;
+  labelStyle?: object;
+  layout?: 'row' | 'column';
+  onPress?: (id: string) => void;
+  selected?: boolean;
+  size?: number;
+  value?: string;
+  name?: string;
+};
+
 type Props = NativeStackScreenProps<StackTypes, "QuizPage">;
 
 const QuizPage = ({ navigation }: Props) => {
-  const [questionNumber, setQuestionNumber] = useState(0);
+//   const [questionNumber, setQuestionNumber] = useState(0);
 
   const [answerTracker, setAnswerTracker] = useState({});
-  let answersData: RadioButtonProps[] = questionsData[questionNumber].answers!;
+//   let answersData: RadioButtonProps[] = questionsData[questionNumber].answers!;
 
-  const [answers, setAnswers] = useState<RadioButtonProps[]>(answersData);
+//   const [answers, setAnswers] = useState<RadioButtonProps[]>(answersData);
 
   function changeQuestion() {
-    setQuestionNumber((prev) => prev + 1);
+    // setQuestionNumber((prev) => prev + 1);
   }
 
   function onPressRadioButton(radioButtonsArray: RadioButtonProps[]) {
@@ -35,36 +53,25 @@ const QuizPage = ({ navigation }: Props) => {
         return object;
       }
     });
-    setAnswerTracker({ ...answerTracker, [questionNumber]: answer[0].value });
-    setAnswers(radioButtonsArray);
+    setAnswerTracker({ ...answerTracker, [answer[0].name as string]: answer[0].value });
+    // setAnswers(radioButtonsArray);
+    console.log(radioButtonsArray)
   }
 
   function checkAnswers() {
-    console.log(questionNumber);
-    console.log(`Length of quiz is ${questionsData.length}`);
+    // console.log(questionNumber);
+    // console.log(radioButtons);
     console.log(answerTracker);
-    console.log(questionsData[questionNumber]);
+    // console.log(questionsData[questionNumber]);
   }
 
-  const yoda = GetImage(`image${questionNumber}`, questionsData)!;
+//   const yoda = GetImage(`image${questionNumber}`, questionsData)!;
 
 
   
 
 
-  if (questionNumber >= questionsData.length - 1) {
-    return (
-      <View>
-        <Text>You finished the quiz, press the button to see your results</Text>
-        <Button
-          title="To Results"
-          onPress={() => {
-            navigation.navigate("ResultsPage");
-          }}
-        ></Button>
-      </View>
-    );
-  } else {
+
     return (
     //   <View>
     //     <Header />
@@ -83,7 +90,6 @@ const QuizPage = ({ navigation }: Props) => {
                   radioButtons={question.answers!}
                   onPress={onPressRadioButton}
                 />
-                <Button onPress={changeQuestion} title="Next"></Button>
                 <Button onPress={checkAnswers} title="Check"></Button>
               </View>
             );
@@ -103,7 +109,6 @@ const QuizPage = ({ navigation }: Props) => {
     //   </View>
     );
   }
-};
 
 const styles = StyleSheet.create({
   pictureContainer: {
