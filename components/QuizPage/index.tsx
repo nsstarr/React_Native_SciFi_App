@@ -25,7 +25,7 @@ export type RadioButtonProps = {
   id: string;
   label?: string;
   labelStyle?: object;
-  layout?: 'row' | 'column';
+  layout?: "row" | "column";
   onPress?: (id: string) => void;
   selected?: boolean;
   size?: number;
@@ -36,15 +36,10 @@ export type RadioButtonProps = {
 type Props = NativeStackScreenProps<StackTypes, "QuizPage">;
 
 const QuizPage = ({ navigation }: Props) => {
-//   const [questionNumber, setQuestionNumber] = useState(0);
-
   const [answerTracker, setAnswerTracker] = useState({});
-//   let answersData: RadioButtonProps[] = questionsData[questionNumber].answers!;
-
-//   const [answers, setAnswers] = useState<RadioButtonProps[]>(answersData);
-
-  function changeQuestion() {
-    // setQuestionNumber((prev) => prev + 1);
+  const [test, setTest] = useState("");
+  function testQuestion() {
+    setTest("test");
   }
 
   function onPressRadioButton(radioButtonsArray: RadioButtonProps[]) {
@@ -53,62 +48,57 @@ const QuizPage = ({ navigation }: Props) => {
         return object;
       }
     });
-    setAnswerTracker({ ...answerTracker, [answer[0].name as string]: answer[0].value });
-    // setAnswers(radioButtonsArray);
-    console.log(radioButtonsArray)
+    setAnswerTracker({
+      ...answerTracker,
+      [answer[0].name as string]: answer[0].value,
+    });
+
+    console.log(radioButtonsArray);
   }
 
   function checkAnswers() {
-    // console.log(questionNumber);
-    // console.log(radioButtons);
     console.log(answerTracker);
-    // console.log(questionsData[questionNumber]);
   }
 
-//   const yoda = GetImage(`image${questionNumber}`, questionsData)!;
+  //   const yoda = GetImage(`image${questionNumber}`, questionsData)!;
 
-
-  
-
-
-
-    return (
+  return (
     //   <View>
     //     <Header />
-        <Swiper>
-
-          {[...questionsData.map((question, key) => {
-            
-            return (
-              <View style={styles.pictureContainer} key = {question.name}>
-                <Header />
-                <QuizPicture source={question.image} />
-                <QuizQuestion
-                  question={question.question!}
-                />
-                <RadioGroup
-                  radioButtons={question.answers!}
-                  onPress={onPressRadioButton}
-                />
-                <Button onPress={checkAnswers} title="Check"></Button>
-              </View>
-            );
-          }),
-          <View key="image6">
-            <Header />
-        <Text>You finished the quiz, press the button to see your results</Text>
-        <Button
-          title="To Results"
-          onPress={() => {
-            navigation.navigate("ResultsPage");
-          }}
-        ></Button>
-      </View>
+    <Swiper loop={false}>
+      {[
+        ...questionsData.map((question, key) => {
+          return (
+            <View style={styles.pictureContainer} key={question.name}>
+              <Header />
+              <QuizPicture source={question.image} />
+              <QuizQuestion question={question.question!} />
+              <RadioGroup
+                radioButtons={question.answers!}
+                onPress={onPressRadioButton}
+              />
+              <Button onPress={checkAnswers} title="Check"></Button>
+              <Button onPress={testQuestion} title="test"></Button>
+            </View>
+          );
+        }),
+        <View key="image6">
+          <Header />
+          <Text>
+            You finished the quiz, press the button to see your results
+          </Text>
+          <Button
+            title="To Results"
+            onPress={() => {
+              navigation.navigate("ResultsPage");
+            }}
+          ></Button>
+        </View>,
       ]}
-        </Swiper>
+    </Swiper>
     //   </View>
-    );
-  }
+  );
+};
 
 const styles = StyleSheet.create({
   pictureContainer: {
