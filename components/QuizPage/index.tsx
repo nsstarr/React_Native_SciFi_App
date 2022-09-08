@@ -7,9 +7,16 @@ import QuizPicture from '../QuizPicture'
 import {questionsData} from "../../utilities/QuestionsData"
 import {GetImage} from "../../utilities/images"
 import RadioGroup, {RadioButtonProps } from 'react-native-radio-buttons-group'
+import type {NativeStackScreenProps} from "@react-navigation/native-stack"
+type StackTypes = {
+  Home: undefined;
+  QuizPage: undefined;
+  ResultsPage: undefined
+}
 
+type Props = NativeStackScreenProps<StackTypes, 'QuizPage'>
 
-const QuizPage = () => {
+const QuizPage = ({navigation}:Props) => {
     const [questionNumber, setQuestionNumber] = useState(0)
 
     const [answerTracker, setAnswerTracker] = useState({})
@@ -31,12 +38,24 @@ const QuizPage = () => {
     }
 
     function checkAnswers() {
+        console.log(questionNumber)
+        console.log(`Length of quiz is ${questionsData.length}`)
         console.log(answerTracker)
-        console.log(questionsData)
+        console.log(questionsData[questionNumber])
     }
 
     const yoda = GetImage(`image${questionNumber}`, questionsData)!
-    return (
+
+    if(questionNumber >= (questionsData.length -1 )){
+        return(
+            <View>
+                <Text>You finished the quiz, press the button to see your results</Text>
+                <Button title="To Results" onPress={() => {navigation.navigate('ResultsPage')}}></Button>
+            </View>
+        )
+    }
+    else {
+        return (
         <View>
             <Header/>
             <View style={styles.pictureContainer}>
@@ -48,6 +67,7 @@ const QuizPage = () => {
             </View>
         </View>
     )
+    }
 }
 
 const styles = StyleSheet.create({

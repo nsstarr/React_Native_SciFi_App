@@ -3,8 +3,17 @@ import { View, Text, ScrollView } from "react-native";
 import Header from "../Header";
 import QuizCategoryCard from "../QuizCategoryCard";
 import {images, GetImage} from "../../utilities/images"
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-const HomeScreen = ({navigation}) => {
+type StackTypes = {
+  Home: undefined;
+  QuizPage: undefined;
+  ResultsPage: undefined
+}
+
+type Props = NativeStackScreenProps<StackTypes, 'Home'>
+
+const HomeScreen = ({navigation}:Props) => {
 
 //   const slides = {
 //     avatar: require("../../assets/profile_picture.png")

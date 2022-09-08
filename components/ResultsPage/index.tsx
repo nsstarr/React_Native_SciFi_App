@@ -1,9 +1,16 @@
 import React from 'react'
 import { View, Text, Image, Button, ScrollView, StyleSheet } from 'react-native'
 import Header from '../Header'
+import type {NativeStackScreenProps} from "@react-navigation/native-stack"
+type StackTypes = {
+  Home: undefined;
+  QuizPage: undefined;
+  ResultsPage: undefined
+}
 
+type Props = NativeStackScreenProps<StackTypes, 'ResultsPage'>
 
-const ResultsPage = () => {
+const ResultsPage = ({navigation}:Props) => {
   const score = '4 of 6';
   return (
     <View style={styles.container}>
@@ -15,8 +22,8 @@ const ResultsPage = () => {
         <Text>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</Text>
         <Text>FINAL LINE</Text>
         <View style={styles.buttonsContainer}>
-          <Button title={'Retake'} />
-          <Button title={'Next Quiz'} />
+          <Button title={'Retake'} onPress={() => {navigation.navigate('QuizPage')}}/>
+          <Button title={'Next Quiz'} onPress={() => {navigation.navigate('Home')}}/>
         </View>
       </ScrollView>
     </View>

@@ -9,7 +9,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CategoryContext from "./context/Category";
 import {useContext} from 'react'
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<StackTypes>();
+
+type StackTypes = {
+  Home: undefined;
+  QuizPage: undefined;
+  ResultsPage: undefined
+}
 
 export default function App() {
   const slides = {
