@@ -1,17 +1,19 @@
 import React from 'react'
-import {View, Text, StyleSheet} from 'react-native'
+import {View, Text, StyleSheet, Button} from 'react-native'
 
-const QuizCategoryCard = (props:CategoryProps) => {
+const QuizCategoryCard = (props:CategoryProps ) => {
     return (
-        <View style = {styles.container}>
+        <View style = {styles.container}  >
             <Text>{props.name}</Text>
+            <Button title = "Sci-Fi Quiz" onPress = {() => {props.navigation.navigate('QuizPage')}}></Button>
         </View>
     )
 }
 
 type CategoryProps = {
-    name: string
-}
+  name: string;
+  navigation: any;
+};
 
 const styles = StyleSheet.create({
   container: {

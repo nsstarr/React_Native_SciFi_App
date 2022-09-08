@@ -4,7 +4,7 @@ import Header from "../Header";
 import QuizCategoryCard from "../QuizCategoryCard";
 import {images, GetImage} from "../../utilities/images"
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
 
 //   const slides = {
 //     avatar: require("../../assets/profile_picture.png")
@@ -17,7 +17,7 @@ const HomeScreen = () => {
       <Header avatar={avatar}/>
       <ScrollView>
         {/* Add .map() later on when more quizzed are added */}
-        <QuizCategoryCard name="Sci-Fi" />
+        <QuizCategoryCard name="Sci-Fi" navigation = {navigation} />
       </ScrollView>
     </View>
   );
