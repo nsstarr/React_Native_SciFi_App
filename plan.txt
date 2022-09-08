@@ -1,0 +1,7 @@
+Problems to solve:
+
+-Getting to the results page DONE
+-Displaying Header DONE
+-Keeping track of answers inputted 
+-Stopping page going back when answer is pressed 
+-Sort out Pagination
