@@ -3,5 +3,5 @@ Problems to solve:
 -Getting to the results page DONE
 -Displaying Header DONE
 -Keeping track of answers inputted DONE
--Stopping page going back when answer is pressed 
--Sort out Pagination
+-Stopping page going back when answer is pressed DONE-ISH?
+-Sort out Pagination DONE

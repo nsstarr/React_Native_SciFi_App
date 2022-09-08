@@ -6,33 +6,26 @@ import QuizQuestion from "../QuizQuestion";
 import QuizPicture from "../QuizPicture";
 import { questionsData } from "../../utilities/QuestionsData";
 import { GetImage } from "../../utilities/images";
-import RadioGroup from "react-native-radio-buttons-group";
+import RadioGroup, {RadioButtonProps} from "react-native-radio-buttons-group";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import Swiper from "react-native-swiper";
+import * as Progress from 'react-native-progress'
+
+
 type StackTypes = {
   Home: undefined;
   QuizPage: undefined;
   ResultsPage: undefined;
 };
 
-export type RadioButtonProps = {
-  borderColor?: string;
-  color?: string;
-  containerStyle?: object;
-  description?: string;
-  descriptionStyle?: object;
-  disabled?: boolean;
-  id: string;
-  label?: string;
-  labelStyle?: object;
-  layout?: "row" | "column";
-  onPress?: (id: string) => void;
-  selected?: boolean;
-  size?: number;
-  value?: string;
-  name?: string;
-};
+type RadioProps = RadioButtonProps & {
+    name?: string
+}
 
+type PaginationProps = {
+    index: number,
+    total: number,
+}
 type Props = NativeStackScreenProps<StackTypes, "QuizPage">;
 
 const QuizPage = ({ navigation }: Props) => {
@@ -42,7 +35,7 @@ const QuizPage = ({ navigation }: Props) => {
     setTest("test");
   }
 
-  function onPressRadioButton(radioButtonsArray: RadioButtonProps[]) {
+  function onPressRadioButton(radioButtonsArray: RadioProps[]) {
     let answer = radioButtonsArray.filter((object) => {
       if (object.selected) {
         return object;
@@ -60,12 +53,17 @@ const QuizPage = ({ navigation }: Props) => {
     console.log(answerTracker);
   }
 
+  function renderPagination(index:number,total:number){
+    return(
+        <Progress.Bar progress={index/(total-1)} width={null} height={15}/>
+    )
+  }
   //   const yoda = GetImage(`image${questionNumber}`, questionsData)!;
 
   return (
     //   <View>
     //     <Header />
-    <Swiper loop={false}>
+    <Swiper loop={false} renderPagination={renderPagination as any} showsButtons={true}>
       {[
         ...questionsData.map((question, key) => {
           return (
