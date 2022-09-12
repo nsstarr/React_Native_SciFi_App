@@ -2,6 +2,8 @@ import React from 'react'
 import { View, Text, Image, Button, ScrollView, StyleSheet } from 'react-native'
 import Header from '../Header'
 import type {NativeStackScreenProps} from "@react-navigation/native-stack"
+
+
 type StackTypes = {
   Home: undefined;
   QuizPage: undefined;

@@ -1,0 +1,39 @@
+Problems to solve:
+
+-Getting to the results page DONE
+-Displaying Header DONE
+-Keeping track of answers inputted DONE
+-Stopping page going back when answer is pressed DONE-ISH?
+-Sort out Pagination DONE
+
+
+
+Scoring Algorithm:
+
+What we get: {
+    question1: "E.t.",
+    question2: "Dragon"
+    etc.
+}
+
+Make an answer Key:
+{
+    question1: "Yoda",
+    question2: "Dragon"
+    etc.
+}
+
+
+let score = 0
+let maxScore = questionData.length
+for loop i = 1, i< questionData.length, i++
+if (!anserTracker.[`question${i}`]){continue}
+if(answerTracker[`question${i}`] === answrKey[`question${i}`]){
+    score++
+}
+
+let displayedScore = Math.floor((score/maxScore)*100)
+
+if(displayedScore <= 30){
+    render You are JAr Jar Binks
+}
