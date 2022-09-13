@@ -8,8 +8,23 @@ import {
   ImageBackground,
   Pressable,
 } from "react-native";
+import {
+  useFonts,
+  Montserrat_400Regular,
+  LobsterTwo_700Bold_Italic,
+} from "@expo-google-fonts/dev"; 
 
 const QuizCategoryCard = (props: CategoryProps) => {
+  let [fontsLoaded] = useFonts({
+    Montserrat_400Regular,
+    LobsterTwo_700Bold_Italic,
+  });
+
+  if (fontsLoaded === false) {
+    return <Text>Loading...</Text>
+  }
+
+
   return (
     <Pressable
       style={[styles.container]}
@@ -70,8 +85,9 @@ const styles = StyleSheet.create({
     marginTop: "20%",
     fontSize: 32,
     textShadowColor: "black",
-    textShadowOffset: { width: 5, height: 5 },
-    textShadowRadius: 10,
+    textShadowOffset: { width: 0, height: 0 },
+    textShadowRadius: 20,
+    fontFamily: "Montserrat_400Regular"
   },
 });
 
