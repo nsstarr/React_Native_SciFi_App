@@ -23,7 +23,7 @@ const Header = (props: HeaderProps) => {
         <Text style={styles.titleFonts}>Trivia Quiz</Text>
         <Image
           source={props.avatar as any}
-          style={{ width: 100, height: 100, borderRadius: 50 }}
+          style={{ width: 50, height: 50, borderRadius: 50 }}
         />
       </View>
     );

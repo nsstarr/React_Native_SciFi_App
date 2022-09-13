@@ -57,7 +57,7 @@ const HomeScreen = ({navigation}:Props) => {
       <View>
         <Header avatar={avatar} />
         
-        <ImageBackground source = {require('../../assets/Vector1.png')} style = {{width: '100%', height: 100, justifyContent: 'center', zIndex: -4}}>
+        <ImageBackground source = {require('../../assets/Vector1.png')} resizeMode="stretch" style = {{width: '100%', height: 100, justifyContent: 'center'}}>
        <Text style = {style.quizText}>Your Quizzes</Text>
        </ImageBackground>
         <ScrollView>

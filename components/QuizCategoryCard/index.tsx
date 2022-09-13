@@ -57,7 +57,7 @@ type CategoryProps = {
 const styles = StyleSheet.create({
   container: {
     width: 300,
-    height: 150,
+    height: 125,
     flexDirection: "column",
     alignSelf: "center",
     justifyContent: "center",
