@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import Header from "../Header";
 import QuizCategoryCard from "../QuizCategoryCard";
 import {images, GetImage} from "../../utilities/images"
+import {questionsData} from "../../utilities/QuestionsData"
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 type StackTypes = {
@@ -21,6 +22,9 @@ const HomeScreen = ({navigation}:Props) => {
 //   }
 
   const avatar = GetImage(`image${0}`,images)
+
+  const quizCard = GetImage(`image${0}`,questionsData)
+
   console.log(avatar);
   return (
     <LinearGradient colors={["rgba(75,0,130,1)","rgba(75,0,130,0.64)","rgba(75,0,130,0.64)","rgba(75,0,130,1)"]} style={{height:"100%"}}>
@@ -29,9 +33,9 @@ const HomeScreen = ({navigation}:Props) => {
       <Header avatar={avatar}/>
       <ScrollView>
         {/* Add .map() later on when more quizzed are added */}
-        <QuizCategoryCard name="Sci-Fi" navigation = {navigation} />
-        <QuizCategoryCard name="Sci-Fi" navigation = {navigation} />
-        <QuizCategoryCard name="Sci-Fi" navigation = {navigation} />
+        <QuizCategoryCard name="Quiz 1" navigation = {navigation} image={quizCard!}/>
+        <QuizCategoryCard name="Quiz 2" navigation = {navigation} image={quizCard!}/>
+        <QuizCategoryCard name="Quiz 3" navigation = {navigation} image={quizCard!}/>
       </ScrollView>
     </View>
     </LinearGradient>
