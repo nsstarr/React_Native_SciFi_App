@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     textShadowColor: "black",
     textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 20,
-    fontFamily: "Montserrat_400Regular"
+    fontFamily: "Montserrat_400Regular",
   },
 });
 
