@@ -1,12 +1,26 @@
 import React from 'react'
 import {View, Image, Text, StyleSheet} from 'react-native';
+import fonts from '../../styles'
+import {
+  useFonts,
+  Montserrat_400Regular,
+  LobsterTwo_700Bold_Italic,
+} from "@expo-google-fonts/dev";
 
 const Header = (props: HeaderProps) => {
 
+  let [fontsLoaded] = useFonts({
+    Montserrat_400Regular,
+    LobsterTwo_700Bold_Italic,
+  });
+
+  if (fontsLoaded === false) {
+    return <Text>Loading...</Text>
+  }
     return (
       <View style={styles.container}>
         <View></View>
-        <Text style={{color: '#fff', fontSize:40}}>Trivia Quiz</Text>
+        <Text style={fonts.titleFonts}>Trivia Quiz</Text>
         <Image
           source={props.avatar as any}
           style={{ width: 100, height: 100, borderRadius: 50 }}
