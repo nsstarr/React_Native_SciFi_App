@@ -1,19 +1,35 @@
 import React from "react";
-import { View, Text, StyleSheet, Button, Platform, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Button,
+  Platform,
+  ImageBackground,
+  Pressable,
+} from "react-native";
 
 const QuizCategoryCard = (props: CategoryProps) => {
   return (
-    <View style={[styles.container]}>
-      <ImageBackground source={props.image as any} resizeMode="cover" style={{height:"100%", width: "100%", borderRadius:20, overflow:"hidden" }}>
-      <Button
-        title={props.name}
-        onPress={() => {
-          props.navigation.navigate("QuizPage");
+    <Pressable
+      style={[styles.container]}
+      onPress={() => {
+        props.navigation.navigate("QuizPage");
+      }}
+    >
+      <ImageBackground
+        source={props.image as any}
+        resizeMode="cover"
+        style={{
+          height: "100%",
+          width: "100%",
+          borderRadius: 20,
+          overflow: "hidden",
         }}
-        color= "red"
-      ></Button>
+      >
+        <Text style={styles.buttonText}>{props.name}</Text>
       </ImageBackground>
-    </View>
+    </Pressable>
   );
 };
 
@@ -46,9 +62,17 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  button: {
-
-  }
+  buttonText: {
+    color: "#ffff",
+    alignSelf: "center",
+    margin: "auto",
+    justifyContent: "center",
+    marginTop: "20%",
+    fontSize: 32,
+    textShadowColor: "black",
+    textShadowOffset: { width: 5, height: 5 },
+    textShadowRadius: 10,
+  },
 });
 
 export default QuizCategoryCard;
