@@ -1,10 +1,10 @@
 import React from 'react'
-import {View, Image} from 'react-native'
+import {View, Image, StyleSheet} from 'react-native'
 
 const QuizPicture = ({source}:ImageProps) => {
     return (
         <View>
-            <Image source={source as any} style = {{width:300, height: 200}}/>
+            <Image source={source as any} style={styles.quizImage} />
         </View>
     )
 }
@@ -12,5 +12,13 @@ const QuizPicture = ({source}:ImageProps) => {
 type ImageProps = {
     source:string
 }
+
+const styles = StyleSheet.create({
+    quizImage: {
+        borderRadius: 20,
+        height: 200,
+        width: 300,
+    }
+})
 
 export default QuizPicture

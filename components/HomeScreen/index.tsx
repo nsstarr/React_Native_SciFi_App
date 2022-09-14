@@ -84,10 +84,6 @@ const HomeScreen = ({navigation}:Props) => {
 };
 
 const style = StyleSheet.create({
-  // container:{
-  //   backgroundColor:"linear-gradient(rgba(75,0,130,1),rgba(255,255,255,1))",
-  //   height:"100%"
-  // }
   whiteRectangle: {
     width: "90%",
     height: "50%",

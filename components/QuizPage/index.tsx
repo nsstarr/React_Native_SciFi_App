@@ -67,16 +67,18 @@ const QuizPage = ({ navigation }: Props) => {
       {[
         ...questionsData.map((question, key) => {
           return (
-            <View style={styles.pictureContainer} key={question.name}>
+            <View style={styles.screen} key={question.name}>
               <Header />
-              <QuizPicture source={question.image} />
-              <QuizQuestion question={question.question!} />
-              <RadioGroup
-                radioButtons={question.answers!}
-                onPress={onPressRadioButton}
-              />
-              <Button onPress={checkAnswers} title="Check"></Button>
-              <Button onPress={testQuestion} title="test"></Button>
+              <View style={styles.quizQuestion}>
+                <QuizPicture source={question.image} />
+                <QuizQuestion question={question.question!} />
+                <RadioGroup
+                  radioButtons={question.answers!}
+                  onPress={onPressRadioButton}
+                />
+                <Button onPress={checkAnswers} title="Check"></Button>
+                <Button onPress={testQuestion} title="test"></Button>
+              </View>
             </View>
           );
         }),
@@ -91,7 +93,7 @@ const QuizPage = ({ navigation }: Props) => {
               navigation.navigate("ResultsPage");
             }}
           ></Button>
-        </View>,
+        </View>
       ]}
     </Swiper>
     //   </View>
@@ -99,10 +101,12 @@ const QuizPage = ({ navigation }: Props) => {
 };
 
 const styles = StyleSheet.create({
-  pictureContainer: {
-    alignItems: "center",
-    margin: 50,
+  screen: {
   },
+  quizQuestion: {
+    marginTop: 50,
+    alignItems: "center",
+  }
 });
 
 export default QuizPage;
