@@ -6,14 +6,11 @@ import QuizQuestion from "../QuizQuestion";
 import QuizPicture from "../QuizPicture";
 import { questionsData } from "../../utilities/QuestionsData";
 import { GetImage } from "../../utilities/images";
-import RadioGroup, {RadioButtonProps} from "react-native-radio-buttons-group";
+import RadioGroup, { RadioButtonProps } from "react-native-radio-buttons-group";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import Swiper from "react-native-swiper";
-import * as Progress from 'react-native-progress'
-import {
-  useFonts,
-  Montserrat_400Regular
-} from "@expo-google-fonts/dev"; 
+import * as Progress from "react-native-progress";
+import { useFonts, Montserrat_400Regular } from "@expo-google-fonts/dev";
 
 type StackTypes = {
   Home: undefined;
@@ -22,24 +19,18 @@ type StackTypes = {
 };
 
 type RadioProps = RadioButtonProps & {
-    name?: string
-}
+  name?: string;
+};
 
 type PaginationProps = {
-    index: number,
-    total: number,
-}
+  index: number;
+  total: number;
+};
 type Props = NativeStackScreenProps<StackTypes, "QuizPage">;
 
 const QuizPage = ({ navigation }: Props) => {
   const [answerTracker, setAnswerTracker] = useState({});
   const [test, setTest] = useState("");
-
-  let wantedArray = questionsData.map((question)=>{
-    return {...question.answers, labelStyle:{fontFamily: 'Montserrat_400Regular', fontSize:16, color:'#ffffff'}}
-  })
-
-  const [radioButtons, setRadioButtons] = useState(wantedArray)
 
   function testQuestion() {
     setTest("test");
@@ -55,7 +46,6 @@ const QuizPage = ({ navigation }: Props) => {
       ...answerTracker,
       [answer[0].name as string]: answer[0].value,
     });
-
     console.log(radioButtonsArray);
   }
 
@@ -63,10 +53,10 @@ const QuizPage = ({ navigation }: Props) => {
     console.log(answerTracker);
   }
 
-  function renderPagination(index:number,total:number){
-    return(
-        <Progress.Bar progress={index/(total-1)} width={null} height={15}/>
-    )
+  function renderPagination(index: number, total: number) {
+    return (
+      <Progress.Bar progress={index / (total - 1)} width={null} height={15} />
+    );
   }
   //   const yoda = GetImage(`image${questionNumber}`, questionsData)!;
 
@@ -75,18 +65,25 @@ const QuizPage = ({ navigation }: Props) => {
   });
 
   if (fontsLoaded === false) {
-    return <Text>Loading...</Text>
+    return <Text>Loading...</Text>;
   }
   return (
     //   <View>
     //     <Header />
-    <Swiper loop={false} renderPagination={renderPagination as any} showsButtons={true}>
+    <Swiper
+      loop={false}
+      renderPagination={renderPagination as any}
+      showsButtons={true}
+    >
       {[
         ...questionsData.map((question, key) => {
-
-          let buttonData = question.answers.map((answer)=>{
-            return {...answer,labelStyle:{fontFamily: 'Montserrat_400Regular', fontSize:16, color:'#ffffff'},containerStyle:{backgroundColor: '#4B0082', marginTop:10}}
-          })
+          let buttonData = question.answers!.map((answer) => {
+            return {
+              ...answer,
+              labelStyle: styles.answerText,
+              containerStyle: styles.answerBackground
+            };
+          });
           return (
             <View style={styles.screen} key={question.name}>
               <Header />
@@ -96,7 +93,6 @@ const QuizPage = ({ navigation }: Props) => {
                 <RadioGroup
                   radioButtons={buttonData!}
                   onPress={onPressRadioButton}
-                  containerStyle={styles.answerBackground}
                 />
                 <Button onPress={checkAnswers} title="Check"></Button>
                 <Button onPress={testQuestion} title="test"></Button>
@@ -115,7 +111,7 @@ const QuizPage = ({ navigation }: Props) => {
               navigation.navigate("ResultsPage");
             }}
           ></Button>
-        </View>
+        </View>,
       ]}
     </Swiper>
     //   </View>
@@ -123,18 +119,24 @@ const QuizPage = ({ navigation }: Props) => {
 };
 
 const styles = StyleSheet.create({
-  screen: {
-  },
+  screen: {},
   quizQuestion: {
     marginTop: 50,
     alignItems: "center",
   },
   answerBackground: {
-
+    backgroundColor: "#4B0082", 
+    marginTop: 10 ,
+    height: 50,
+    width: 200,
+    borderRadius: 20,
+    padding: 10
   },
   answerText: {
-    fontFamily: 'Montserrat_400Regular'
-  }
+    fontFamily: "Montserrat_400Regular",
+    fontSize: 16,
+    color: "#ffffff",
+  },
 });
 
 export default QuizPage;
