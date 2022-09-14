@@ -10,7 +10,10 @@ import RadioGroup, {RadioButtonProps} from "react-native-radio-buttons-group";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import Swiper from "react-native-swiper";
 import * as Progress from 'react-native-progress'
-
+import {
+  useFonts,
+  Montserrat_400Regular
+} from "@expo-google-fonts/dev"; 
 
 type StackTypes = {
   Home: undefined;
@@ -31,6 +34,13 @@ type Props = NativeStackScreenProps<StackTypes, "QuizPage">;
 const QuizPage = ({ navigation }: Props) => {
   const [answerTracker, setAnswerTracker] = useState({});
   const [test, setTest] = useState("");
+
+  let wantedArray = questionsData.map((question)=>{
+    return {...question.answers, labelStyle:{fontFamily: 'Montserrat_400Regular', fontSize:16, color:'#ffffff'}}
+  })
+
+  const [radioButtons, setRadioButtons] = useState(wantedArray)
+
   function testQuestion() {
     setTest("test");
   }
@@ -60,12 +70,23 @@ const QuizPage = ({ navigation }: Props) => {
   }
   //   const yoda = GetImage(`image${questionNumber}`, questionsData)!;
 
+  let [fontsLoaded] = useFonts({
+    Montserrat_400Regular,
+  });
+
+  if (fontsLoaded === false) {
+    return <Text>Loading...</Text>
+  }
   return (
     //   <View>
     //     <Header />
     <Swiper loop={false} renderPagination={renderPagination as any} showsButtons={true}>
       {[
         ...questionsData.map((question, key) => {
+
+          let buttonData = question.answers.map((answer)=>{
+            return {...answer,labelStyle:{fontFamily: 'Montserrat_400Regular', fontSize:16, color:'#ffffff'},containerStyle:{backgroundColor: '#4B0082', marginTop:10}}
+          })
           return (
             <View style={styles.screen} key={question.name}>
               <Header />
@@ -73,8 +94,9 @@ const QuizPage = ({ navigation }: Props) => {
                 <QuizPicture source={question.image} />
                 <QuizQuestion question={question.question!} />
                 <RadioGroup
-                  radioButtons={question.answers!}
+                  radioButtons={buttonData!}
                   onPress={onPressRadioButton}
+                  containerStyle={styles.answerBackground}
                 />
                 <Button onPress={checkAnswers} title="Check"></Button>
                 <Button onPress={testQuestion} title="test"></Button>
@@ -106,6 +128,12 @@ const styles = StyleSheet.create({
   quizQuestion: {
     marginTop: 50,
     alignItems: "center",
+  },
+  answerBackground: {
+
+  },
+  answerText: {
+    fontFamily: 'Montserrat_400Regular'
   }
 });
 
