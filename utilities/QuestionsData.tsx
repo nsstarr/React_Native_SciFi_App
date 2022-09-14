@@ -2,14 +2,18 @@ interface Questions {
     name: string,
     image: any,
     description: string,
-    question?: string,
-    answers?: {
+    question: string,
+    answers: {
         id: string,
         value: string,
         label: string,
         name: string
-    }[]
-}
+        color?:string
+        labelStyle?: any
+        containerStyle?: any
+}[]
+    }
+    
 
 export const questionsData: Array<Questions> = [
   {
