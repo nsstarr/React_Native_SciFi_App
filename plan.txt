@@ -37,3 +37,7 @@ let displayedScore = Math.floor((score/maxScore)*100)
 if(displayedScore <= 30){
     render You are JAr Jar Binks
 }
+////////////////////
+radio buttons 
+
+- Put 

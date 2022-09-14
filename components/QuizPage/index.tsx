@@ -32,6 +32,7 @@ const QuizPage = ({ navigation }: Props) => {
   const [answerTracker, setAnswerTracker] = useState({});
   const [test, setTest] = useState("");
 
+
   function testQuestion() {
     setTest("test");
   }
@@ -58,8 +59,7 @@ const QuizPage = ({ navigation }: Props) => {
       <Progress.Bar progress={index / (total - 1)} width={null} height={15} />
     );
   }
-  //   const yoda = GetImage(`image${questionNumber}`, questionsData)!;
-
+  
   let [fontsLoaded] = useFonts({
     Montserrat_400Regular,
   });
@@ -68,8 +68,6 @@ const QuizPage = ({ navigation }: Props) => {
     return <Text>Loading...</Text>;
   }
   return (
-    //   <View>
-    //     <Header />
     <Swiper
       loop={false}
       renderPagination={renderPagination as any}
@@ -81,7 +79,8 @@ const QuizPage = ({ navigation }: Props) => {
             return {
               ...answer,
               labelStyle: styles.answerText,
-              containerStyle: styles.answerBackground
+              containerStyle: styles.answerBackground,
+              color: "#EFA80C"
             };
           });
           return (
@@ -114,7 +113,6 @@ const QuizPage = ({ navigation }: Props) => {
         </View>,
       ]}
     </Swiper>
-    //   </View>
   );
 };
 
@@ -125,18 +123,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   answerBackground: {
-    backgroundColor: "#4B0082", 
-    marginTop: 10 ,
+    marginTop: 10,
     height: 50,
     width: 200,
     borderRadius: 20,
-    padding: 10
+    padding: 10,
   },
   answerText: {
     fontFamily: "Montserrat_400Regular",
     fontSize: 16,
     color: "#ffffff",
-  },
+  }
 });
 
 export default QuizPage;
