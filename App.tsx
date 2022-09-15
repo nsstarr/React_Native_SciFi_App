@@ -9,6 +9,7 @@ import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navig
 import CategoryContext from "./context/Category";
 import {useContext} from 'react'
 import { StackAnimationTypes } from "react-native-screens";
+import Profile from "./components/Profile";
 
 const Stack = createNativeStackNavigator<StackTypes>();
 
@@ -17,7 +18,8 @@ type Props = NativeStackScreenProps<StackTypes, 'ResultsPage'>
 type StackTypes = {
   Home: undefined;
   QuizPage: undefined;
-  ResultsPage: {}
+  ResultsPage: {},
+  Profile: undefined
 }
 
 export default function App() {
@@ -32,6 +34,7 @@ export default function App() {
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="QuizPage" component={QuizPage} />
           <Stack.Screen name="ResultsPage" component={ResultsPage} />
+          <Stack.Screen name="Profile" component={Profile} />
           {/* <Header avatar={slides.avatar}></Header>
       <QuizAnswer answer="Hello World" />
       <QuizAnswer answer="How are you doing?" />

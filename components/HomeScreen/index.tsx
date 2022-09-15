@@ -55,7 +55,7 @@ const HomeScreen = ({navigation}:Props) => {
     >
       <View style={style.whiteRectangle}></View>
       <View>
-        <Header avatar={avatar} />
+        <Header avatar={avatar} navigation={navigation} />
         
         <ImageBackground source = {require('../../assets/Vector1.png')} resizeMode="stretch" style = {{width: '100%', height: 100, justifyContent: 'center'}}>
        <Text style = {style.quizText}>Your Quizzes</Text>

@@ -18,6 +18,7 @@ import {
 } from "@expo-google-fonts/dev";
 import { LinearGradient } from "expo-linear-gradient";
 import {answerKey, resultsData} from "../../utilities/QuestionsData"
+import HeaderNoProfile from '../HeaderNoProfile'
 
 type Answers = {
   [question: string]: string
@@ -86,7 +87,7 @@ var scoreImage = ''
   return (
     
     <View style={styles.container}>
-      <Header />
+      <HeaderNoProfile />
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Text style={styles.resultsText}>You Scored: {score}%</Text>
         { scoreImage &&  <Image 
@@ -95,7 +96,6 @@ var scoreImage = ''
         />}
         <Text style={styles.resultsText}>You are: {scoreTitle}</Text>
         <Text>{scoreDescription}</Text>
-        <Text>FINAL LINE</Text>
         <View style={styles.buttonsContainer}>
           <Pressable
             style={styles.resultsButton}

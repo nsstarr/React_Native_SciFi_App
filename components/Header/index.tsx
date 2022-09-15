@@ -1,11 +1,18 @@
 import React from 'react'
-import {View, Image, Text, StyleSheet} from 'react-native';
+import {View, Image, Text, StyleSheet, Pressable} from 'react-native';
 // import fonts from '../../styles'
 import {
   useFonts,
   Montserrat_400Regular,
   LobsterTwo_700Bold_Italic,
 } from "@expo-google-fonts/dev";
+
+type StackTypes = {
+  Home: undefined;
+  QuizPage: undefined;
+  ResultsPage: {};
+  Profile: undefined;
+};
 
 const Header = (props: HeaderProps) => {
 
@@ -19,18 +26,24 @@ const Header = (props: HeaderProps) => {
   }
     return (
       <View style={styles.container}>
-        <View></View>
         <Text style={styles.titleFonts}>Trivia Quiz</Text>
-        <Image
-          source={props.avatar as any}
-          style={{ width: 50, height: 50, borderRadius: 50 }}
-        />
+        <Pressable
+          onPress={() => {
+            props.navigation.navigate("Profile");
+          }}
+        >
+          <Image
+            source={props.avatar as any}
+            style={{ width: 50, height: 50, borderRadius: 50, marginLeft: 50 }}
+          />
+        </Pressable>
       </View>
     );
 }
 
 type HeaderProps = {
     avatar?: string|null, 
+    navigation: any;
 }
 
 const styles = StyleSheet.create({
