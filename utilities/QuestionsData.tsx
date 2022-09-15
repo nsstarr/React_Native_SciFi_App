@@ -15,6 +15,11 @@ interface Questions {
     }
     
 
+  export const quizCardData = {
+    name: "First Quiz",
+    image: ""
+  }
+
 export const questionsData: Array<Questions> = [
   {
     name: "image0",
@@ -82,11 +87,37 @@ export const questionsData: Array<Questions> = [
     description: "Scene from the Matrix.",
     question: "In the Matrix Trilogy, machines kept humans inside the Matrix, for what purpose?",
     answers: [
-      { id: "1", name: "question6", value: "To use as Batteries", label: "To use as Batteries" },
-      { id: "2", name: "question6", value: "To use as a Neural Network", label: "To use as a Neural Network" },
-      { id: "3", name: "question6", value: "To research Human behaviour", label: "To research Human behaviour" },
-      { id: "4", name: "question6", value: "To punish Humans", label: "To punish Humans" },
+      { id: "1", name: "question6", value: "Batteries", label: "To use as Batteries" },
+      { id: "2", name: "question6", value: "Neural Network", label: "To use as a Neural Network" },
+      { id: "3", name: "question6", value: "Research", label: "To research Human behaviour" },
+      { id: "4", name: "question6", value: "Punishment", label: "To punish Humans" },
     ],
   },
 ];
 
+export const answerKey = {
+  questions1: "Yoda",
+  question2: "Dragon",
+  question3: "Los Angeles",
+  question4: "Battle",
+  question5: "Elliot",
+  question6: "Batteries"
+}
+
+export const resultsData = [{
+  name: "Jar Jar Binks",
+  image: "",
+  description: ""
+},{
+  name: "Jar Jar Binks",
+  image: "",
+  description: ""
+},{
+  name: "Jar Jar Binks",
+  image: "",
+  description: ""
+},{
+  name: "Jar Jar Binks",
+  image: "",
+  description: ""
+}]

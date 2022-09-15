@@ -31,7 +31,7 @@ type PaginationProps = {
 type Props = NativeStackScreenProps<StackTypes, "QuizPage">;
 
 
-const QuizPage = ({ navigation }: Props) => {
+const QuizPage = ({ route, navigation }: Props) => {
   const [answerTracker, setAnswerTracker] = useState({});
   const [test, setTest] = useState("");
 
@@ -109,7 +109,7 @@ const QuizPage = ({ navigation }: Props) => {
        <Text style={styles.finalPageText}>Your have reached the end of the quiz. If you are finished, press the button below to see your results</Text>
        </ImageBackground>
             <Pressable onPress={() => {
-              navigation.navigate("ResultsPage");
+              navigation.navigate("ResultsPage",answerTracker);
             }} style={styles.button}>
               <Text style={styles.buttonText}>To results</Text>
             </Pressable>

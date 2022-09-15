@@ -25,7 +25,9 @@ type StackTypes = {
 
 type Props = NativeStackScreenProps<StackTypes, "ResultsPage">;
 
-const ResultsPage = ({ navigation }: Props) => {
+const ResultsPage = ({route, navigation }: Props) => {
+const {question1} = route.params
+
   const score = "4 of 6";
   const scoreTitle = "Jar Jar Binks";
   const scoreDescription = "I’m... I’m so sorry, but the results don’t lie";
@@ -39,11 +41,15 @@ const ResultsPage = ({ navigation }: Props) => {
     return <Text>Loading...</Text>;
   }
 
+  function checkAnswers() {
+    console.log(route.params);
+  }
+
   return (
     <View style={styles.container}>
       <Header />
       <ScrollView contentContainerStyle={styles.scrollView}>
-        <Text style={styles.resultsText}>You Scored: {score}%</Text>
+        <Text style={styles.resultsText}>You Scored: {question1}%</Text>
         <Image
           source={require("../../assets/Matrix.jpg")}
           style={{ width: 300, height: 200 }}
@@ -79,6 +85,7 @@ const ResultsPage = ({ navigation }: Props) => {
             </LinearGradient>
           </Pressable>
         </View>
+        <Button onPress={checkAnswers} title="Check"></Button>
       </ScrollView>
     </View>
   );
@@ -102,7 +109,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   resultsText: {
-    fontFamily: " Montserrat_400Regular",
+    fontFamily: "Montserrat_400Regular",
     fontSize: 24,
     marginBottom: 15,
     marginTop: 15,

@@ -37,7 +37,14 @@ let displayedScore = Math.floor((score/maxScore)*100)
 if(displayedScore <= 30){
     render You are JAr Jar Binks
 }
-////////////////////
-radio buttons 
 
-- Put 
+Styling radio buttons:
+
+
+importing questions data, then handing into <RadioGroup radioButtons={questionsData.answers}/>
+Currently handing in an array of labels, values and the id, 
+
+store questionsData.answers into a state variable
+
+Maybe useffect?
+loop through that array, each object spread operator and create new object adding in style
