@@ -16,11 +16,16 @@ import {
   Montserrat_600SemiBold,
 } from "@expo-google-fonts/dev";
 import { LinearGradient } from "expo-linear-gradient";
+import {answerKey} from "../../utilities/QuestionsData"
+
+type Answers = {
+  [question: string]: string
+}
 
 type StackTypes = {
   Home: undefined;
   QuizPage: undefined;
-  ResultsPage: undefined;
+  ResultsPage: Answers;
 };
 
 type Props = NativeStackScreenProps<StackTypes, "ResultsPage">;
@@ -28,7 +33,27 @@ type Props = NativeStackScreenProps<StackTypes, "ResultsPage">;
 const ResultsPage = ({route, navigation }: Props) => {
 const {question1} = route.params
 
-  const score = "4 of 6";
+  function scoring(answers:Answers,answerKey:Answers) {
+    console.log(answers)
+    console.log(answerKey)
+    let score = 0
+    let keys = Object.keys(answerKey)
+    console.log(keys)
+    let maxScore = keys.length
+    for (let i in answerKey){
+      if (!answers[i]){
+        continue
+      }
+      if(answers[i] === answerKey[i]){
+        score++
+      }
+    }
+    let percentage = Math.floor((score/maxScore)*100)
+    console.log(percentage)
+    return percentage 
+  }
+
+  const score = scoring(route.params,answerKey);
   const scoreTitle = "Jar Jar Binks";
   const scoreDescription = "I’m... I’m so sorry, but the results don’t lie";
 
@@ -49,7 +74,7 @@ const {question1} = route.params
     <View style={styles.container}>
       <Header />
       <ScrollView contentContainerStyle={styles.scrollView}>
-        <Text style={styles.resultsText}>You Scored: {question1}%</Text>
+        <Text style={styles.resultsText}>You Scored: {score}%</Text>
         <Image
           source={require("../../assets/Matrix.jpg")}
           style={{ width: 300, height: 200 }}

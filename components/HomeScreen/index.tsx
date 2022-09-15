@@ -4,7 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import Header from "../Header";
 import QuizCategoryCard from "../QuizCategoryCard";
 import {images, GetImage} from "../../utilities/images"
-import {questionsData} from "../../utilities/QuestionsData"
+import {questionsData, } from "../../utilities/QuestionsData"
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import {
   useFonts,

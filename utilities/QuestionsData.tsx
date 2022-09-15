@@ -96,7 +96,7 @@ export const questionsData: Array<Questions> = [
 ];
 
 export const answerKey = {
-  questions1: "Yoda",
+  question1: "Yoda",
   question2: "Dragon",
   question3: "Los Angeles",
   question4: "Battle",

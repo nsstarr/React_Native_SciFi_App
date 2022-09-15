@@ -17,7 +17,7 @@ import { LinearGradient } from "expo-linear-gradient";
 type StackTypes = {
   Home: undefined;
   QuizPage: undefined;
-  ResultsPage: undefined;
+  ResultsPage: {};
 };
 
 type RadioProps = RadioButtonProps & {
