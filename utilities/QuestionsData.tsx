@@ -104,20 +104,25 @@ export const answerKey = {
   question6: "Batteries"
 }
 
-export const resultsData = [{
-  name: "Jar Jar Binks",
-  image: "",
-  description: ""
-},{
-  name: "Jar Jar Binks",
-  image: "",
-  description: ""
-},{
-  name: "Jar Jar Binks",
-  image: "",
-  description: ""
-},{
-  name: "Jar Jar Binks",
-  image: "",
-  description: ""
-}]
+export const resultsData = [
+  {
+    name: "Jar Jar Binks",
+    image: require("../assets/jarJarBinks.jpg"),
+    description: "I’m... I’m so sorry, but the results don’t lie",
+  },
+  {
+    name: "Anakin Skywalker",
+    image: require("../assets/anakin.jpg"),
+    description: "You still have a bit of growing up to do..",
+  },
+  {
+    name: "Qui Gon Jinn",
+    image: require("../assets/QuiGon.png"),
+    description: "You may have what it takes to be a Jedi Master.",
+  },
+  {
+    name: "Yoda",
+    image: require("../assets/yodaLight.jpg"),
+    description: "Wise one you are.",
+  },
+];

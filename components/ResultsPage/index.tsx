@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Pressable,
 } from "react-native";
+import {useState} from 'react';
 import Header from "../Header";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import {
@@ -16,7 +17,7 @@ import {
   Montserrat_600SemiBold,
 } from "@expo-google-fonts/dev";
 import { LinearGradient } from "expo-linear-gradient";
-import {answerKey} from "../../utilities/QuestionsData"
+import {answerKey, resultsData} from "../../utilities/QuestionsData"
 
 type Answers = {
   [question: string]: string
@@ -31,14 +32,17 @@ type StackTypes = {
 type Props = NativeStackScreenProps<StackTypes, "ResultsPage">;
 
 const ResultsPage = ({route, navigation }: Props) => {
-const {question1} = route.params
+
+// const [scoreTitle, setScoreTitle] = useState('')
+// const [scoreDescription, setScoreDescription] = useState('')
+// const [scoreImage, setScoreImage] = useState('')
+var scoreTitle = ''
+var scoreDescription = ''
+var scoreImage = ''
 
   function scoring(answers:Answers,answerKey:Answers) {
-    console.log(answers)
-    console.log(answerKey)
     let score = 0
     let keys = Object.keys(answerKey)
-    console.log(keys)
     let maxScore = keys.length
     for (let i in answerKey){
       if (!answers[i]){
@@ -49,13 +53,21 @@ const {question1} = route.params
       }
     }
     let percentage = Math.floor((score/maxScore)*100)
-    console.log(percentage)
+    getResults(percentage)
     return percentage 
   }
 
+  function getResults(score: number) {
+      const index = score <= 30 ? 0 : score <= 60 ? 1 : score <= 90 ? 2 : 3
+      scoreTitle = resultsData[index].name
+      scoreDescription = resultsData[index].description
+      scoreImage = resultsData[index].image
+    
+  }
+
   const score = scoring(route.params,answerKey);
-  const scoreTitle = "Jar Jar Binks";
-  const scoreDescription = "I’m... I’m so sorry, but the results don’t lie";
+  // const scoreTitle = "Jar Jar Binks";
+  // const scoreDescription = "I’m... I’m so sorry, but the results don’t lie";
 
   let [fontsLoaded] = useFonts({
     Montserrat_400Regular,
@@ -70,15 +82,17 @@ const {question1} = route.params
     console.log(route.params);
   }
 
+
   return (
+    
     <View style={styles.container}>
       <Header />
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Text style={styles.resultsText}>You Scored: {score}%</Text>
-        <Image
-          source={require("../../assets/Matrix.jpg")}
+        { scoreImage &&  <Image 
+            source={scoreImage as any}
           style={{ width: 300, height: 200 }}
-        />
+        />}
         <Text style={styles.resultsText}>You are: {scoreTitle}</Text>
         <Text>{scoreDescription}</Text>
         <Text>FINAL LINE</Text>
@@ -140,7 +154,6 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   resultsButton: {
-    // backgroundColor: "purple",
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
