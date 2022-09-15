@@ -24,6 +24,7 @@ export default function Profile({ route, navigation }: Props) {
   const [previewVisible, setPreviewVisible] = useState(false);
   const [capturedImage, setCapturedImage] = useState<any>(null);
   const [startCamera, setStartCamera] = useState(false);
+  const [savedImage, setSavedImage] =useState()
 
   const __startCamera = async () => {
     const { status } = await Camera.requestCameraPermissionsAsync();
@@ -48,6 +49,12 @@ export default function Profile({ route, navigation }: Props) {
     setPreviewVisible(false);
     __startCamera();
   };
+
+  const __savePhoto = () => {
+    setSavedImage(capturedImage.uri)
+    setPreviewVisible(false)
+    setStartCamera(false)
+  }
 
   if (previewVisible && capturedImage) {
     return (
@@ -100,6 +107,7 @@ export default function Profile({ route, navigation }: Props) {
   } else
     return (
       <View style={styles.container}>
+        <Text>{savedImage}</Text>
         <View
           style={{
             flex: 1,
