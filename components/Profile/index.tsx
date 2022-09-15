@@ -1,86 +1,145 @@
-import { Camera, CameraType } from 'expo-camera';
-import { useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View, Alert } from 'react-native';
+import { Camera, CameraType } from "expo-camera";
+import { useState } from "react";
+import {
+  Button,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  Alert,
+  ImageBackground,
+} from "react-native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import CameraPreview from "../CameraPreview";
 
 type Props = NativeStackScreenProps<StackTypes, "Profile">;
 
 type StackTypes = {
-  Profile: undefined
-}
+  Profile: undefined;
+};
 
-let camera: Camera
+let camera: Camera;
 
+export default function Profile({ route, navigation }: Props) {
+  const [previewVisible, setPreviewVisible] = useState(false);
+  const [capturedImage, setCapturedImage] = useState<any>(null);
+  const [startCamera, setStartCamera] = useState(false);
 
+  const __startCamera = async () => {
+    const { status } = await Camera.requestCameraPermissionsAsync();
+    if (status === "granted") {
+      // do something
+      setStartCamera(true);
+    } else {
+      Alert.alert("Access denied");
+    }
+  };
 
-export default function Profile({route,navigation}:Props) {
+  const __takePicture = async () => {
+    if (!camera) return;
+    const photo = await camera.takePictureAsync();
+    console.log(photo);
+    setPreviewVisible(true);
+    setCapturedImage(photo);
+  };
 
-  const [startCamera,setStartCamera] = useState(false)
+  const __retakePicture = () => {
+    setCapturedImage(null);
+    setPreviewVisible(false);
+    __startCamera();
+  };
 
-const __startCamera = async ()=>{
-  const {status} = await Camera.requestPermissionsAsync()
-  if(status === 'granted'){
-    // do something
-    setStartCamera(true)
-  }else{
-    Alert.alert("Access denied")
-}}
-
-
-if(startCamera){
-  return(
-    <Camera
-          style={{flex: 1,width:"100%"}}
-          ref={(r) => {
-            camera = r!
-          }}
-        ></Camera>
-  )
-}
-  else 
-  return (
-    <View style={styles.container}>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: '#fff',
-          justifyContent: 'center',
-          alignItems: 'center'
+  if (previewVisible && capturedImage) {
+    return (
+      <CameraPreview
+        photo={capturedImage}
+        savePhoto={__savePhoto}
+        retakePicture={__retakePicture}
+      />
+    );
+  } else if (startCamera) {
+    return (
+      <Camera
+        style={{ flex: 1, width: "100%" }}
+        ref={(r) => {
+          camera = r!;
         }}
       >
-        <TouchableOpacity
-        onPress={__startCamera}
+        <View
           style={{
-            width: 130,
-            borderRadius: 4,
-            backgroundColor: '#14274e',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: 40
+            position: "absolute",
+            bottom: 0,
+            flexDirection: "row",
+            flex: 1,
+            width: "100%",
+            padding: 20,
+            justifyContent: "space-between",
           }}
         >
-          <Text
+          <View
             style={{
-              color: '#fff',
-              fontWeight: 'bold',
-              textAlign: 'center'
+              alignSelf: "center",
+              flex: 1,
+              alignItems: "center",
             }}
           >
-            Take picture
-          </Text>
-        </TouchableOpacity>
+            <TouchableOpacity
+              onPress={__takePicture}
+              style={{
+                width: 70,
+                height: 70,
+                bottom: 0,
+                borderRadius: 50,
+                backgroundColor: "#fff",
+              }}
+            />
+          </View>
+        </View>
+      </Camera>
+    );
+  } else
+    return (
+      <View style={styles.container}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "#fff",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <TouchableOpacity
+            onPress={__startCamera}
+            style={{
+              width: 130,
+              borderRadius: 4,
+              backgroundColor: "#14274e",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              height: 40,
+            }}
+          >
+            <Text
+              style={{
+                color: "#fff",
+                fontWeight: "bold",
+                textAlign: "center",
+              }}
+            >
+              Take picture
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
-
-    </View>
-  )
+    );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
-})
+});
