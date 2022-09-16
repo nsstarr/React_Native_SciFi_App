@@ -28,8 +28,7 @@ let {saveProfile} = route.params
 console.log(saveProfile)
 
 useEffect(()=>{
-
-  setSavedImage(route.params.preview)
+    setSavedImage(route.params.preview)
 },[])
 
   const [previewVisible, setPreviewVisible] = useState(false);
@@ -62,8 +61,8 @@ useEffect(()=>{
   };
 
   const __savePhoto = () => {
-    setSavedImage(capturedImage.uri)
     let capturedUri = {uri: capturedImage.uri}
+    setSavedImage(capturedUri)
     saveProfile(capturedUri)
     setPreviewVisible(false)
     setStartCamera(false)
