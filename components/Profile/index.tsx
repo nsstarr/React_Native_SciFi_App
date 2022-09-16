@@ -31,6 +31,7 @@ const {profilePic, setProfilePic} = useContext(AvatarContext);
   const [capturedImage, setCapturedImage] = useState<any>(null);
   const [startCamera, setStartCamera] = useState(false);
   const [savedImage, setSavedImage] = useState<string | { uri: string }>();
+  const [cameraType, setCameraType] = useState(CameraType.back);
 
   const __startCamera = async () => {
     const { status } = await Camera.requestCameraPermissionsAsync();
@@ -64,6 +65,13 @@ const {profilePic, setProfilePic} = useContext(AvatarContext);
     setStartCamera(false)
   }
 
+  const __switchCamera = () => {
+    setCameraType((current) => 
+      ( current === CameraType.back ? CameraType.front : CameraType.back )
+    ); 
+  }
+
+
   if (previewVisible && capturedImage) {
     return (
       <CameraPreview
@@ -76,6 +84,7 @@ const {profilePic, setProfilePic} = useContext(AvatarContext);
     return (
       <Camera
         style={{ flex: 1, width: "100%" }}
+        type={cameraType}
         ref={(r) => {
           camera = r!;
         }}
@@ -96,6 +105,8 @@ const {profilePic, setProfilePic} = useContext(AvatarContext);
               alignSelf: "center",
               flex: 1,
               alignItems: "center",
+              flexDirection: 'row',
+              justifyContent: 'space-evenly',
             }}
           >
             <TouchableOpacity
@@ -108,6 +119,27 @@ const {profilePic, setProfilePic} = useContext(AvatarContext);
                 backgroundColor: "#fff",
               }}
             />
+            <TouchableOpacity
+              onPress={__switchCamera}
+              style={{
+                borderRadius: 50,
+                height: 50,
+                width: 50,
+                top: 0,
+                backgroundColor: '#EFA80C',
+                zIndex: 100,
+                justifyContent: 'center'
+              }}
+            >
+       <Text
+           style={{
+           fontSize: 12,
+           alignSelf: 'center',
+           }}
+           >
+       {cameraType === 'front' ? 'Front' : 'Back'}
+       </Text>
+</TouchableOpacity>
           </View>
         </View>
       </Camera>
@@ -145,7 +177,7 @@ const {profilePic, setProfilePic} = useContext(AvatarContext);
             >
               Take picture
             </Text>
-          </TouchableOpacity>
+            </TouchableOpacity>
         </View>
       </View>
     );
