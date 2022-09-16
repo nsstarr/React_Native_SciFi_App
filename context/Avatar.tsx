@@ -1,9 +1,9 @@
 import React, {createContext} from 'react'
 
 
-interface IContextProps {
+interface ContextProps {
   profilePic: string;
-  setProfilePic: (state: string) => void;
+  setProfilePic: React.Dispatch<string | {uri: string}>;
 }
 
-export const AvatarContext = React.createContext({} as IContextProps);
+export const AvatarContext = React.createContext({} as ContextProps);

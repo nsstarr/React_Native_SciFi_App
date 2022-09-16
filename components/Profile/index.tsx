@@ -24,7 +24,7 @@ let camera: Camera;
 
 export default function Profile({ route, navigation }: Props) {
 
-const {profilePic, setProfilePic} = useContext(AvatarContext) as any;
+const {profilePic, setProfilePic} = useContext(AvatarContext);
 
 
   const [previewVisible, setPreviewVisible] = useState(false);

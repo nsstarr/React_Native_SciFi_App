@@ -27,7 +27,7 @@ type StackTypes = {
 export default function App() {
 
 const [profilePic, setProfilePic] = useState(
-  require("./assets/profile_picture.png") as string
+  require("./assets/profile_picture.png")
 );
   return (
   
