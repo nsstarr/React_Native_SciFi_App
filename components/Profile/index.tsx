@@ -1,5 +1,6 @@
 import { Camera, CameraType } from "expo-camera";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AvatarContext } from "../../context/Avatar";
 import {
   Button,
   StyleSheet,
@@ -23,18 +24,13 @@ let camera: Camera;
 
 export default function Profile({ route, navigation }: Props) {
 
-console.log(route.params)
-let {saveProfile} = route.params
-console.log(saveProfile)
+const [profilePic, setProfilePic] = useContext(AvatarContext) as any;
 
-useEffect(()=>{
-    setSavedImage(route.params.preview)
-},[])
 
   const [previewVisible, setPreviewVisible] = useState(false);
   const [capturedImage, setCapturedImage] = useState<any>(null);
   const [startCamera, setStartCamera] = useState(false);
-  const [savedImage, setSavedImage] =useState()
+  const [savedImage, setSavedImage] = useState<string | { uri: string }>();
 
   const __startCamera = async () => {
     const { status } = await Camera.requestCameraPermissionsAsync();
@@ -63,7 +59,7 @@ useEffect(()=>{
   const __savePhoto = () => {
     let capturedUri = {uri: capturedImage.uri}
     setSavedImage(capturedUri)
-    saveProfile(capturedUri)
+    setProfilePic(capturedUri)
     setPreviewVisible(false)
     setStartCamera(false)
   }

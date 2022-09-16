@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import { AvatarContext } from '../../context/Avatar';
 import {View, Image, Text, StyleSheet, Pressable} from 'react-native';
 // import fonts from '../../styles'
 import {
@@ -16,9 +17,8 @@ type StackTypes = {
 
 
 const Header = (props: HeaderProps) => {
-  const [profilePic, setProfilePic] = useState(require("../../assets/profile_picture.png") as string)
-  
 
+  const avatar = useContext(AvatarContext)
 
   let [fontsLoaded] = useFonts({
     Montserrat_400Regular,
@@ -33,11 +33,11 @@ const Header = (props: HeaderProps) => {
         <Text style={styles.titleFonts}>Trivia Quiz</Text>
         <Pressable
           onPress={() => {
-            props.navigation.navigate("Profile",{saveProfile:setProfilePic, preview:profilePic});
+            props.navigation.navigate("Profile");
           }}
         >
           <Image
-            source={profilePic as any}
+            source={avatar as any}
             style={{ width: 50, height: 50, borderRadius: 50, marginLeft: 50 }}
           />
         </Pressable>

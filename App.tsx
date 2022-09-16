@@ -7,9 +7,11 @@ import ResultsPage from "./components/ResultsPage";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack";
 import CategoryContext from "./context/Category";
-import {useContext, useState} from 'react'
+import {useContext, useState, createContext} from 'react'
 import { StackAnimationTypes } from "react-native-screens";
 import Profile from "./components/Profile";
+import { AvatarContext } from "./context/Avatar";
+
 
 const Stack = createNativeStackNavigator<StackTypes>();
 
@@ -24,12 +26,13 @@ type StackTypes = {
 
 export default function App() {
 
-
-
+const [profilePic, setProfilePic] = useState(
+  require("./assets/profile_picture.png") as string
+);
   return (
   
       <NavigationContainer>
-        
+        <AvatarContext.Provider value = {[profilePic, setProfilePic]}>
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={HomeScreen}/>
           <Stack.Screen name="QuizPage" component={QuizPage} />
@@ -43,6 +46,7 @@ export default function App() {
           {/* <QuizPage /> */}
           {/* <ResultsPage /> */}
         </Stack.Navigator>
+        </AvatarContext.Provider>
       </NavigationContainer>
 
   );
