@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { View, Text, ScrollView, StyleSheet, ImageBackground} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Header from "../Header";
@@ -19,6 +19,7 @@ type StackTypes = {
   ResultsPage: undefined
 }
 
+
 type Props = NativeStackScreenProps<StackTypes, 'Home'>
 
 const HomeScreen = ({navigation}:Props) => {
@@ -26,6 +27,9 @@ const HomeScreen = ({navigation}:Props) => {
 //   const slides = {
 //     avatar: require("../../assets/profile_picture.png")
 //   }
+
+
+
 
   const avatar = GetImage(`image${0}`,images)
 
@@ -55,7 +59,7 @@ const HomeScreen = ({navigation}:Props) => {
     >
       <View style={style.whiteRectangle}></View>
       <View>
-        <Header avatar={avatar} navigation={navigation} />
+        <Header navigation={navigation} />
         
         <ImageBackground source = {require('../../assets/Vector1.png')} resizeMode="stretch" style = {{width: '100%', height: 100, justifyContent: 'center'}}>
        <Text style = {style.quizText}>Your Quizzes</Text>

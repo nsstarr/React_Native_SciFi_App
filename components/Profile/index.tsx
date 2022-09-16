@@ -1,5 +1,5 @@
 import { Camera, CameraType } from "expo-camera";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   StyleSheet,
@@ -8,6 +8,7 @@ import {
   View,
   Alert,
   ImageBackground,
+  Image
 } from "react-native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import CameraPreview from "../CameraPreview";
@@ -15,12 +16,22 @@ import CameraPreview from "../CameraPreview";
 type Props = NativeStackScreenProps<StackTypes, "Profile">;
 
 type StackTypes = {
-  Profile: undefined;
+  Profile: {saveProfile:React.Dispatch<React.SetStateAction<string>>, preview:string};
 };
 
 let camera: Camera;
 
 export default function Profile({ route, navigation }: Props) {
+
+console.log(route.params)
+let {saveProfile} = route.params
+console.log(saveProfile)
+
+useEffect(()=>{
+
+  setSavedImage(route.params.preview)
+},[])
+
   const [previewVisible, setPreviewVisible] = useState(false);
   const [capturedImage, setCapturedImage] = useState<any>(null);
   const [startCamera, setStartCamera] = useState(false);
@@ -52,6 +63,8 @@ export default function Profile({ route, navigation }: Props) {
 
   const __savePhoto = () => {
     setSavedImage(capturedImage.uri)
+    let capturedUri = {uri: capturedImage.uri}
+    saveProfile(capturedUri)
     setPreviewVisible(false)
     setStartCamera(false)
   }
@@ -107,7 +120,7 @@ export default function Profile({ route, navigation }: Props) {
   } else
     return (
       <View style={styles.container}>
-        <Text>{savedImage}</Text>
+        {savedImage && <Image source={savedImage as any} style={{height:100, width:100}}/>}
         <View
           style={{
             flex: 1,

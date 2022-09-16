@@ -7,7 +7,7 @@ import ResultsPage from "./components/ResultsPage";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack";
 import CategoryContext from "./context/Category";
-import {useContext} from 'react'
+import {useContext, useState} from 'react'
 import { StackAnimationTypes } from "react-native-screens";
 import Profile from "./components/Profile";
 
@@ -19,19 +19,19 @@ type StackTypes = {
   Home: undefined;
   QuizPage: undefined;
   ResultsPage: {},
-  Profile: undefined
+  Profile: {saveProfile:React.Dispatch<React.SetStateAction<string>>, preview:string}
 }
 
 export default function App() {
-  const slides = {
-    avatar: require("./assets/profile_picture.png"),
-  };
+
+
+
   return (
   
       <NavigationContainer>
         
         <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Home" component={HomeScreen}/>
           <Stack.Screen name="QuizPage" component={QuizPage} />
           <Stack.Screen name="ResultsPage" component={ResultsPage} />
           <Stack.Screen name="Profile" component={Profile} />
