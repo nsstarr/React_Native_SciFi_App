@@ -18,7 +18,8 @@ type StackTypes = {
 
 const Header = (props: HeaderProps) => {
 
-  const avatar = useContext(AvatarContext)
+  const {profilePic, setProfilePic} = useContext(AvatarContext)
+  console.log(profilePic, setProfilePic)
 
   let [fontsLoaded] = useFonts({
     Montserrat_400Regular,
@@ -37,7 +38,7 @@ const Header = (props: HeaderProps) => {
           }}
         >
           <Image
-            source={avatar as any}
+            source={profilePic as any}
             style={{ width: 50, height: 50, borderRadius: 50, marginLeft: 50 }}
           />
         </Pressable>
