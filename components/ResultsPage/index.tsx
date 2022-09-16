@@ -7,6 +7,7 @@ import {
   ScrollView,
   StyleSheet,
   Pressable,
+  Platform
 } from "react-native";
 import {useState} from 'react';
 import Header from "../Header";
@@ -163,6 +164,17 @@ const styles = StyleSheet.create({
     marginBottom: 60,
     textAlignVertical: "center",
     textAlign: "center",
+    ...Platform.select({
+      ios: {
+        shadowColor: "#171717",
+        shadowOffset: { width: -2, height: 4 },
+        shadowOpacity: 0.8,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 2,
+      },
+    }),
   },
   buttonText: {
     color: "#FFFFFF",
