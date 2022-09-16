@@ -93,7 +93,7 @@ var scoreImage = ''
         <Text style={styles.resultsText}>You Scored: {score}%</Text>
         { scoreImage &&  <Image 
             source={scoreImage as any}
-          style={{ width: 300, height: 200 }}
+          style={styles.image}
         />}
         <Text style={styles.resultsText}>You are: {scoreTitle}</Text>
         <Text>{scoreDescription}</Text>
@@ -125,7 +125,6 @@ var scoreImage = ''
             </LinearGradient>
           </Pressable>
         </View>
-        <Button onPress={checkAnswers} title="Check"></Button>
       </ScrollView>
     </View>
   );
@@ -135,6 +134,25 @@ const styles = StyleSheet.create({
   container: {
     height: "100%",
   },
+  image:{ 
+    width: 300, 
+    height: 200,
+    borderRadius: 20,
+    borderStyle: "solid",
+    borderColor:  "#EFA80C",
+    borderWidth: 5,
+    // ...Platform.select({
+    //   ios: {
+    //     shadowColor: "#171717",
+    //     shadowOffset: { width: -2, height: 4 },
+    //     shadowOpacity: 0.8,
+    //     shadowRadius: 4,
+    //   },
+    //   android: {
+    //     elevation: 8,
+    //   },
+    // }),
+  },
   scrollView: {
     justifyContent: "center",
     flexDirection: "column",
@@ -143,8 +161,7 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     flexDirection: "row",
-    justifyContent: "center",
-    gap: 3,
+    justifyContent: "space-evenly",
     width: "100%",
     marginTop: 15,
   },
@@ -172,9 +189,10 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
       },
       android: {
-        elevation: 2,
+        elevation: 8,
       },
     }),
+    
   },
   buttonText: {
     color: "#FFFFFF",
@@ -187,7 +205,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   linearGradient: {
-    borderRadius: 20
+    width: "100%",
+    borderRadius: 20,
   }
 });
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Button, ImageBackground, Pressable } from "react-native";
+import { View, Text, StyleSheet, Button, ImageBackground, Pressable, Platform } from "react-native";
 import HeaderNoProfile from "../HeaderNoProfile";
 import QuizAnswer from "../QuizAnswer";
 import QuizQuestion from "../QuizQuestion";
@@ -133,6 +133,17 @@ const styles = StyleSheet.create({
     width: 200,
     borderRadius: 20,
     padding: 10,
+    // ...Platform.select({
+    //   ios: {
+    //     shadowColor: "#171717",
+    //     shadowOffset: { width: -2, height: 4 },
+    //     shadowOpacity: 0.8,
+    //     shadowRadius: 4,
+    //   },
+    //   android: {
+    //     elevation: 8,
+    //   },
+    // }),
   },
   answerText: {
     fontFamily: "Montserrat_400Regular",
@@ -164,7 +175,18 @@ const styles = StyleSheet.create({
     width: 160,
     marginBottom: 60,
     textAlignVertical: "center",
-    textAlign: "center"
+    textAlign: "center",
+    ...Platform.select({
+      ios: {
+        shadowColor: "#171717",
+        shadowOffset: { width: -2, height: 4 },
+        shadowOpacity: 0.8,
+        shadowRadius: 4,
+      },
+      android: {
+        elevation: 8,
+      },
+    }),
   },
   buttonText:{
     color:"#FFFFFF",
