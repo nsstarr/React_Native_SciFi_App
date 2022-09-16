@@ -16,55 +16,58 @@ const CameraPreview = ({ photo, savePhoto, retakePicture }: any ) => {
         source={{ uri: photo && photo.uri }}
         style={{
           flex: 1,
+          justifyContent: "space-evenly",
+          flexDirection: "row",
+          alignItems: "flex-end",
         }}
       >
         <TouchableOpacity
-            onPress={retakePicture}
+          onPress={retakePicture}
+          style={{
+            width: 130,
+            borderRadius: 4,
+            backgroundColor: "#EFA80C",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            height: 40,
+            marginBottom: 40,
+          }}
+        >
+          <Text
             style={{
-              width: 130,
-              borderRadius: 4,
-              backgroundColor: "#14274e",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              height: 40,
+              color: "#fff",
+              fontWeight: "bold",
+              textAlign: "center",
             }}
           >
-            <Text
-              style={{
-                color: "#fff",
-                fontWeight: "bold",
-                textAlign: "center",
-              }}
-            >
-              Retake picture
-            </Text>
-          </TouchableOpacity>
+            Retake picture
+          </Text>
+        </TouchableOpacity>
         <TouchableOpacity
-            onPress={savePhoto}
+          onPress={savePhoto}
+          style={{
+            width: 130,
+            borderRadius: 4,
+            backgroundColor: "#EFA80C",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            height: 40,
+            marginBottom: 40,
+          }}
+        >
+          <Text
             style={{
-              width: 130,
-              borderRadius: 4,
-              backgroundColor: "#14274e",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              height: 40,
+              color: "#fff",
+              fontWeight: "bold",
+              textAlign: "center",
             }}
           >
-            <Text
-              style={{
-                color: "#fff",
-                fontWeight: "bold",
-                textAlign: "center",
-              }}
-            >
-              Save picture
-            </Text>
-          </TouchableOpacity>
-
+            Save picture
+          </Text>
+        </TouchableOpacity>
       </ImageBackground>
-
     </View>
   );
 };
