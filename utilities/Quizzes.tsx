@@ -1,10 +1,10 @@
-import { questionsData } from "./QuizTemplate"
 import * as Starwars from "./StarWars"
 import * as Matrix from "./TheMatrix"
 
 
 export const quizzes = [
     Starwars,
+    Matrix
 ]
 
 

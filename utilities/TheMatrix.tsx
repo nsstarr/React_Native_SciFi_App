@@ -16,13 +16,13 @@ interface Questions {
 
 export const quizCardData = {
   name: "Matrix",
-  image: ""
+  image: require("../assets/Yoda.jpg")
 }
 
 export const questionsData: Array<Questions> = [
   {
     name: "image1",
-    image: require("../assets/MatrixQuiz/MatrixPoster.jpg"),
+    image: require("../assets/MatrixQuiz/matrixPoster.jpg"),
     description: "Image of Morpheus talking to Neo",
     question:
       "In the Matrix 1 opening scene, who is the first person to speak?",
@@ -150,7 +150,7 @@ export const questionsData: Array<Questions> = [
   },
   {
     name: "image8",
-    image: require("../assets/MatrixQuiz/Glitch.jfif"),
+    image: require("../assets/MatrixQuiz/Glitch.jpg"),
     description: "",
     question: "What phenomena indicates a glitch in the Matrix?",
     answers: [
@@ -191,7 +191,7 @@ export const questionsData: Array<Questions> = [
     name: "image10",
     image: require("../assets/"),
     description: "",
-    question: "What does agent Smith say at the end of Matrix Revolutions?",
+    question: "What does agent Smith say to Neo in the end fight of Matrix Revolutions?",
     answers: [
       {
         id: "1",
@@ -210,7 +210,7 @@ export const questionsData: Array<Questions> = [
         name: "question15",
         value: "Everything",
         label:
-          "Everything that has a beginning has an end. I see the end coming, I see the darkness spreading. I see death.",
+          "Everything that has a beginning has an end.",
       },
       {
         id: "4",
@@ -229,37 +229,32 @@ export const answerKey = {
   question3: "Rabbit",
   question4: "Zion",
   question5: "Batteries",
-  question6: "",
-  question7: "",
-  question8: "",
-  question9: "",
-  question10: "",
-  question11: "",
-  question12: "",
-  question13: "",
-  question14: "",
-  question15: ""
+  question6: "41",
+  question7: "Merovinginan",
+  question8: "Deja Vu",
+  question9: "Empty",
+  question10: "Everything"
 }
 
 export const resultsData = [
   {
-    name: "",
-    image: require("../assets/"),
+    name: "Human trapped in the matrix",
+    image: require("../assets/MatrixQuiz/human-battery.jpeg"),
+    description: "You are still trapped in the Matrix!",
+  },
+  {
+    name: "Agent Smith",
+    image: require("../assets/MatrixQuiz/agent-smith.jpeg"),
     description: "",
   },
   {
-    name: "",
-    image: require("../assets/"),
-    description: "",
+    name: "Morpheus",
+    image: require("../assets/MatrixQuiz/Morpheus.jpg"),
+    description: "You are beginning to believe",
   },
   {
-    name: "",
-    image: require("../assets/"),
-    description: "",
-  },
-  {
-    name: "",
-    image: require("../assets/"),
-    description: "",
+    name: "Neo",
+    image: require("../assets/MatrixQuiz/neo-bullets.png"),
+    description: "You are the One!",
   },
 ];
