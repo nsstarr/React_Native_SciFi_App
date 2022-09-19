@@ -10,8 +10,22 @@ Clone the project, cd in to the folder and run:
 
 ```bash
   git clone https://github.com/anastasia-starostina/React_Native_SciFi_App
-  cd project_folder
+  cd React_Native_SciFi_App
   npm install
+```
+
+To start the app run:
+
+```bash
+  npm start
+  # or
+  expo start
+```
+
+Windows users run:
+
+```bash
+  expo start --tunnel
 ```
 
 ## Optimizations
