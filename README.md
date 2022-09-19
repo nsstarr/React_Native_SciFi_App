@@ -4,25 +4,24 @@ A brief description of what this project does and who it's for
 
 ## Installation
 
-Install my-project with npm
+The project was built using [expo-cli](https://expo.dev/tools#cli). You will need to install it in your system.
+
+Clone the project, cd in to the folder and run:
 
 ```bash
-  npm install my-project
-  cd my-project
+  git clone https://github.com/anastasia-starostina/React_Native_SciFi_App
+  cd project_folder
+  npm install
 ```
 
 ## Features
 
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
+- Anyone can add new quizzes
+- Users can use the device camera to take picture and preview it.
 
 ## Tech Stack
 
-**Client:** React, Redux, TailwindCSS
-
-**Server:** Node, Express
+**Client:** ReactNative, React Native Navigation, Expo, Expo Camera
 
 ## Screenshots
 
@@ -38,10 +37,10 @@ Insert gif or link to demo
 
 | Color         | Hex                                                              |
 | ------------- | ---------------------------------------------------------------- |
-| Example Color | ![#0a192f](https://via.placeholder.com/10/0a192f?text=+) #0a192f |
-| Example Color | ![#f8f8f8](https://via.placeholder.com/10/f8f8f8?text=+) #f8f8f8 |
-| Example Color | ![#00b48a](https://via.placeholder.com/10/00b48a?text=+) #00b48a |
-| Example Color | ![#00d1a0](https://via.placeholder.com/10/00b48a?text=+) #00d1a0 |
+| Example Color | ![#4b0082](https://via.placeholder.com/10/4b0082?text=+) #4b0082 |
+| Example Color | ![#EFA80C](https://via.placeholder.com/10/EFA80C?text=+) #EFA80C |
+| Example Color | ![#ffffff](https://via.placeholder.com/10/ffffff?text=+) #ffffff |
+| Example Color | ![#000000](https://via.placeholder.com/10/00b48a?text=+) #000000 |
 
 ## Key Takeaways
 
@@ -55,10 +54,17 @@ Insert gif or link to demo
 
 - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
 - [Awesome README](https://github.com/matiassingers/awesome-readme)
+- [Expo Google Fonts](https://www.npmjs.com/package/@expo-google-fonts/dev)
+- [Expo Camera](https://www.npmjs.com/package/expo-camera)
+- [Expo Linear Gradient](https://www.npmjs.com/package/expo-linear-gradient)
+- [Expo Status Base](https://www.npmjs.com/package/expo-status-bar)
+- [React Native Radio Buttons](https://www.npmjs.com/package/react-native-radio-buttons-group)
 
 ## Authors
 
-- [@octokatherine](https://www.github.com/octokatherine)
+- [@anastasia](https://www.github.com/anastasia-starostina)
+- [@christophe](https://www.github.com/St0neofFr33dom)
+- [@carloseam](https://www.github.com/carloseam)
 
 ## Contributing
 
