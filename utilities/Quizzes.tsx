@@ -1,5 +1,6 @@
 import * as Starwars from "./StarWars";
 import * as Matrix from "./TheMatrix";
+// import * as Firefly from "./Firefly";
 
 export const quizzes = [Starwars, Matrix];
 
@@ -36,3 +37,4 @@ export interface QuizzesType {
   };
   resultsData: Array<ResultsData>;
 }
+

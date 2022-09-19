@@ -32,7 +32,6 @@ const [profilePic, setProfilePic] = useState(
   require("./assets/profile_picture.png")
 );
   return (
-  
       <NavigationContainer>
         <AvatarContext.Provider value={{profilePic, setProfilePic}}>
         <Stack.Navigator initialRouteName="Home">

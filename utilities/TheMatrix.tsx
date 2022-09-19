@@ -16,7 +16,7 @@ interface Questions {
 
 export const quizCardData = {
   name: "Matrix",
-  image: require("../assets/MatrixQuiz/matrix-poster.jpg")
+  image: require("../assets/MatrixQuiz/matrix-quiz-poster.jpg")
 }
 
 export const questionsData: Array<Questions> = [
