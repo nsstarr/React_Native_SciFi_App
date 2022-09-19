@@ -217,7 +217,7 @@ export const questionsData: Array<Questions> = [
         name: "question15",
         value: "Purpose",
         label:
-          "It is purpose that created us. Purpose that connects us. Purpose that pulls us",
+          "It is purpose that created us. Purpose that connects us.",
       },
     ],
   },

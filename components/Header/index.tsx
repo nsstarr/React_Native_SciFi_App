@@ -1,7 +1,7 @@
-import React, {useState, useContext} from 'react'
-import { AvatarContext } from '../../context/Avatar';
-import {View, Image, Text, StyleSheet, Pressable} from 'react-native';
-// import fonts from '../../styles'
+import React, { useState, useContext } from "react";
+import { AvatarContext } from "../../context/Avatar";
+import { View, Image, Text, StyleSheet, Pressable } from "react-native";
+
 import {
   useFonts,
   Montserrat_400Regular,
@@ -15,11 +15,9 @@ type StackTypes = {
   Profile: undefined;
 };
 
-
 const Header = (props: HeaderProps) => {
-
-  const {profilePic, setProfilePic} = useContext(AvatarContext)
-  console.log(profilePic, setProfilePic)
+  const { profilePic, setProfilePic } = useContext(AvatarContext);
+  console.log(profilePic, setProfilePic);
 
   let [fontsLoaded] = useFonts({
     Montserrat_400Regular,
@@ -27,40 +25,38 @@ const Header = (props: HeaderProps) => {
   });
 
   if (fontsLoaded === false) {
-    return <Text>Loading...</Text>
+    return <Text>Loading...</Text>;
   }
-    return (
-      <View style={styles.container}>
-        <Text style={styles.titleFonts}>Trivia Quiz</Text>
-        <Pressable
-          onPress={() => {
-            props.navigation.navigate("Profile");
-          }}
-        >
-          <Image
-            source={profilePic as any}
-            style={{ width: 50, height: 50, borderRadius: 50, marginLeft: 50 }}
-          />
-        </Pressable>
-      </View>
-    );
-}
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titleFonts}>Sci-Trivia</Text>
+      <Pressable
+        onPress={() => {
+          props.navigation.navigate("Profile");
+        }}
+      >
+        <Image
+          source={profilePic as any}
+          style={{ width: 50, height: 50, borderRadius: 50, marginLeft: 50 }}
+        />
+      </Pressable>
+    </View>
+  );
+};
 
 type HeaderProps = {
-    navigation: any;
-}
+  navigation: any;
+};
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    // position: 'absolute',
-    width: '100%',
+    flexDirection: "row",
+    width: "100%",
     height: 70,
-    // marginTop: 0,
     padding: 10,
-    backgroundColor: '#4B0082',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    backgroundColor: "#4B0082",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   defaultFonts: {
     fontFamily: "Montserrat_400Regular",
@@ -73,5 +69,4 @@ const styles = StyleSheet.create({
   },
 });
 
-
-export default Header
+export default Header;

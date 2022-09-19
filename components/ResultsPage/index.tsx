@@ -7,9 +7,8 @@ import {
   ScrollView,
   StyleSheet,
   Pressable,
-  Platform
+  Platform,
 } from "react-native";
-import {useState} from 'react';
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import {
   useFonts,
@@ -17,68 +16,58 @@ import {
   Montserrat_600SemiBold,
 } from "@expo-google-fonts/dev";
 import { LinearGradient } from "expo-linear-gradient";
-import HeaderNoProfile from '../HeaderNoProfile'
+import HeaderNoProfile from "../HeaderNoProfile";
+import { QuizzesType } from "../../utilities/Quizzes";
 
 type Answers = {
-  [question: string]: string
-}
+  [question: string]: string;
+};
 
-export interface ResultsType {
-  answerTracker : Answers
-  answerKey: Answers
-  resultsData: Array<{
-    name:string 
-    image:any  
-    description: string
-  }>
-}
+export type ResultsType = QuizzesType & {
+  answerTracker: Answers;
+};
+
 type StackTypes = {
   Home: undefined;
-  QuizPage: undefined;
+  QuizPage: QuizzesType;
   ResultsPage: ResultsType;
 };
 
 type Props = NativeStackScreenProps<StackTypes, "ResultsPage">;
 
-const ResultsPage = ({route, navigation }: Props) => {
+const ResultsPage = ({ route, navigation }: Props) => {
+  var scoreTitle = "";
+  var scoreDescription = "";
+  var scoreImage = "";
 
-// const [scoreTitle, setScoreTitle] = useState('')
-// const [scoreDescription, setScoreDescription] = useState('')
-// const [scoreImage, setScoreImage] = useState('')
-var scoreTitle = ''
-var scoreDescription = ''
-var scoreImage = ''
+  let { answerKey, answerTracker, resultsData, questionsData, quizCardData } =
+    route.params;
 
-  let {answerKey, answerTracker, resultsData} = route.params
-
-  function scoring(answers:Answers,answerKey:Answers) {
-    let score = 0
-    let keys = Object.keys(answerKey)
-    let maxScore = keys.length
-    for (let i in answerKey){
-      if (!answers[i]){
-        continue
+  function scoring(answers: Answers, answerKey: Answers) {
+    let score = 0;
+    let keys = Object.keys(answerKey);
+    let maxScore = keys.length;
+    for (let i in answerKey) {
+      if (!answers[i]) {
+        continue;
       }
-      if(answers[i] === answerKey[i]){
-        score++
+      if (answers[i] === answerKey[i]) {
+        score++;
       }
     }
-    let percentage = Math.floor((score/maxScore)*100)
-    getResults(percentage)
-    return percentage 
+    let percentage = Math.floor((score / maxScore) * 100);
+    getResults(percentage);
+    return percentage;
   }
 
   function getResults(score: number) {
-      const index = score <= 30 ? 0 : score <= 60 ? 1 : score <= 90 ? 2 : 3
-      scoreTitle = resultsData[index].name
-      scoreDescription = resultsData[index].description
-      scoreImage = resultsData[index].image
-    
+    const index = score <= 30 ? 0 : score <= 60 ? 1 : score <= 90 ? 2 : 3;
+    scoreTitle = resultsData[index].name;
+    scoreDescription = resultsData[index].description;
+    scoreImage = resultsData[index].image;
   }
 
-  const score = scoring(answerTracker,answerKey);
-  // const scoreTitle = "Jar Jar Binks";
-  // const scoreDescription = "I’m... I’m so sorry, but the results don’t lie";
+  const score = scoring(answerTracker, answerKey);
 
   let [fontsLoaded] = useFonts({
     Montserrat_400Regular,
@@ -93,24 +82,26 @@ var scoreImage = ''
     console.log(route.params);
   }
 
-
   return (
-    
     <View style={styles.container}>
       <HeaderNoProfile />
       <ScrollView contentContainerStyle={styles.scrollView}>
         <Text style={styles.resultsText}>You Scored: {score}%</Text>
-        { scoreImage &&  <Image 
-            source={scoreImage as any}
-          style={styles.image}
-        />}
+        {scoreImage && (
+          <Image source={scoreImage as any} style={styles.image} />
+        )}
         <Text style={styles.resultsText}>You are: {scoreTitle}</Text>
         <Text>{scoreDescription}</Text>
         <View style={styles.buttonsContainer}>
           <Pressable
             style={styles.resultsButton}
             onPress={() => {
-              navigation.navigate("QuizPage");
+              navigation.navigate("QuizPage", {
+                answerKey,
+                questionsData,
+                quizCardData,
+                resultsData,
+              });
             }}
           >
             <LinearGradient
@@ -143,24 +134,13 @@ const styles = StyleSheet.create({
   container: {
     height: "100%",
   },
-  image:{ 
-    width: 300, 
+  image: {
+    width: 300,
     height: 200,
     borderRadius: 20,
     borderStyle: "solid",
-    borderColor:  "#EFA80C",
+    borderColor: "#EFA80C",
     borderWidth: 5,
-    // ...Platform.select({
-    //   ios: {
-    //     shadowColor: "#171717",
-    //     shadowOffset: { width: -2, height: 4 },
-    //     shadowOpacity: 0.8,
-    //     shadowRadius: 4,
-    //   },
-    //   android: {
-    //     elevation: 8,
-    //   },
-    // }),
   },
   scrollView: {
     justifyContent: "center",
@@ -201,7 +181,6 @@ const styles = StyleSheet.create({
         elevation: 8,
       },
     }),
-    
   },
   buttonText: {
     color: "#FFFFFF",
@@ -216,7 +195,7 @@ const styles = StyleSheet.create({
   linearGradient: {
     width: "100%",
     borderRadius: 20,
-  }
+  },
 });
 
 export default ResultsPage;

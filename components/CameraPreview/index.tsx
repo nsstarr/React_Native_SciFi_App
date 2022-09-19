@@ -1,7 +1,7 @@
-import React from 'react'
-import {View, ImageBackground, Text, TouchableOpacity} from 'react-native';
+import React from "react";
+import { View, ImageBackground, Text, TouchableOpacity } from "react-native";
 
-const CameraPreview = ({ photo, savePhoto, retakePicture }: any ) => {
+const CameraPreview = ({ photo, savePhoto, retakePicture }: any) => {
   return (
     <View
       style={{
@@ -71,4 +71,4 @@ const CameraPreview = ({ photo, savePhoto, retakePicture }: any ) => {
   );
 };
 
-export default CameraPreview
+export default CameraPreview;

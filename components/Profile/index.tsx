@@ -9,7 +9,7 @@ import {
   View,
   Alert,
   ImageBackground,
-  Image
+  Image,
 } from "react-native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import CameraPreview from "../CameraPreview";
@@ -17,15 +17,16 @@ import CameraPreview from "../CameraPreview";
 type Props = NativeStackScreenProps<StackTypes, "Profile">;
 
 type StackTypes = {
-  Profile: {saveProfile:React.Dispatch<React.SetStateAction<string>>, preview:string};
+  Profile: {
+    saveProfile: React.Dispatch<React.SetStateAction<string>>;
+    preview: string;
+  };
 };
 
 let camera: Camera;
 
 export default function Profile({ route, navigation }: Props) {
-
-const {profilePic, setProfilePic} = useContext(AvatarContext);
-
+  const { profilePic, setProfilePic } = useContext(AvatarContext);
 
   const [previewVisible, setPreviewVisible] = useState(false);
   const [capturedImage, setCapturedImage] = useState<any>(null);
@@ -36,7 +37,6 @@ const {profilePic, setProfilePic} = useContext(AvatarContext);
   const __startCamera = async () => {
     const { status } = await Camera.requestCameraPermissionsAsync();
     if (status === "granted") {
-      // do something
       setStartCamera(true);
     } else {
       Alert.alert("Access denied");
@@ -58,19 +58,18 @@ const {profilePic, setProfilePic} = useContext(AvatarContext);
   };
 
   const __savePhoto = () => {
-    let capturedUri = {uri: capturedImage.uri}
-    setSavedImage(capturedUri)
-    setProfilePic(capturedUri)
-    setPreviewVisible(false)
-    setStartCamera(false)
-  }
+    let capturedUri = { uri: capturedImage.uri };
+    setSavedImage(capturedUri);
+    setProfilePic(capturedUri);
+    setPreviewVisible(false);
+    setStartCamera(false);
+  };
 
   const __switchCamera = () => {
-    setCameraType((current) => 
-      ( current === CameraType.back ? CameraType.front : CameraType.back )
-    ); 
-  }
-
+    setCameraType((current) =>
+      current === CameraType.back ? CameraType.front : CameraType.back
+    );
+  };
 
   if (previewVisible && capturedImage) {
     return (
@@ -105,8 +104,8 @@ const {profilePic, setProfilePic} = useContext(AvatarContext);
               alignSelf: "center",
               flex: 1,
               alignItems: "center",
-              flexDirection: 'row',
-              justifyContent: 'space-evenly',
+              flexDirection: "row",
+              justifyContent: "space-evenly",
             }}
           >
             <TouchableOpacity
@@ -126,20 +125,20 @@ const {profilePic, setProfilePic} = useContext(AvatarContext);
                 height: 50,
                 width: 50,
                 top: 0,
-                backgroundColor: '#EFA80C',
+                backgroundColor: "#EFA80C",
                 zIndex: 100,
-                justifyContent: 'center'
+                justifyContent: "center",
               }}
             >
-       <Text
-           style={{
-           fontSize: 12,
-           alignSelf: 'center',
-           }}
-           >
-       {cameraType === 'front' ? 'Front' : 'Back'}
-       </Text>
-</TouchableOpacity>
+              <Text
+                style={{
+                  fontSize: 12,
+                  alignSelf: "center",
+                }}
+              >
+                {cameraType === "front" ? "Front" : "Back"}
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
       </Camera>
@@ -147,7 +146,12 @@ const {profilePic, setProfilePic} = useContext(AvatarContext);
   } else
     return (
       <View style={styles.container}>
-        {savedImage && <Image source={savedImage as any} style={{height:100, width:100}}/>}
+        {savedImage && (
+          <Image
+            source={savedImage as any}
+            style={{ height: 100, width: 100 }}
+          />
+        )}
         <View
           style={{
             flex: 1,
@@ -177,7 +181,7 @@ const {profilePic, setProfilePic} = useContext(AvatarContext);
             >
               Take picture
             </Text>
-            </TouchableOpacity>
+          </TouchableOpacity>
         </View>
       </View>
     );

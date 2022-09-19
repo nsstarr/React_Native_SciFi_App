@@ -13,7 +13,7 @@ import {
   Montserrat_400Regular,
   LobsterTwo_700Bold_Italic,
 } from "@expo-google-fonts/dev";
-import { QuizzesType } from "../../utilities/Quizzes"; 
+import { QuizzesType } from "../../utilities/Quizzes";
 
 const QuizCategoryCard = (props: CategoryProps) => {
   let [fontsLoaded] = useFonts({
@@ -22,15 +22,14 @@ const QuizCategoryCard = (props: CategoryProps) => {
   });
 
   if (fontsLoaded === false) {
-    return <Text>Loading...</Text>
+    return <Text>Loading...</Text>;
   }
-
 
   return (
     <Pressable
       style={[styles.container]}
       onPress={() => {
-        props.navigation.navigate("QuizPage",props.data);
+        props.navigation.navigate("QuizPage", props.data);
       }}
     >
       <ImageBackground
@@ -53,7 +52,7 @@ type CategoryProps = {
   name: string;
   navigation: any;
   image: string;
-  data: QuizzesType
+  data: QuizzesType;
 };
 
 const styles = StyleSheet.create({
@@ -66,7 +65,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 10,
     borderRadius: 20,
-    // backgroundColor: "grey",
     ...Platform.select({
       ios: {
         shadowColor: "#171717",
@@ -84,7 +82,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     margin: "auto",
     justifyContent: "center",
-    marginTop: "20%",
+    marginTop: "15%",
     fontSize: 32,
     textShadowColor: "black",
     textShadowOffset: { width: 0, height: 0 },

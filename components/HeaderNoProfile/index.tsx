@@ -1,6 +1,6 @@
-import React from 'react'
-import {View, Image, Text, StyleSheet} from 'react-native';
-// import fonts from '../../styles'
+import React from "react";
+import { View, Image, Text, StyleSheet } from "react-native";
+
 import {
   useFonts,
   Montserrat_400Regular,
@@ -8,34 +8,30 @@ import {
 } from "@expo-google-fonts/dev";
 
 const HeaderNoProfile = () => {
-
   let [fontsLoaded] = useFonts({
     Montserrat_400Regular,
     LobsterTwo_700Bold_Italic,
   });
 
   if (fontsLoaded === false) {
-    return <Text>Loading...</Text>
+    return <Text>Loading...</Text>;
   }
-    return (
-      <View style={styles.container}>
-        <Text style={styles.titleFonts}>Trivia Quiz</Text>
-      </View>
-    );
-}
-
+  return (
+    <View style={styles.container}>
+      <Text style={styles.titleFonts}>Sci-Trivia</Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    // position: 'absolute',
-    width: '100%',
+    flexDirection: "row",
+    width: "100%",
     height: 70,
-    // marginTop: 0,
     padding: 10,
-    backgroundColor: '#4B0082',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#4B0082",
+    alignItems: "center",
+    justifyContent: "center",
   },
   defaultFonts: {
     fontFamily: "Montserrat_400Regular",
@@ -48,5 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-
-export default HeaderNoProfile
+export default HeaderNoProfile;
