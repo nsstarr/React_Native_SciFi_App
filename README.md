@@ -14,6 +14,10 @@ Clone the project, cd in to the folder and run:
   npm install
 ```
 
+## Optimizations
+
+What optimizations did you make in your code? E.g. refactors, performance improvements, accessibility
+
 ## Features
 
 - Anyone can add new quizzes
