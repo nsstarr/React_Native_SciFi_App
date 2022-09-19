@@ -12,6 +12,7 @@ import { StackAnimationTypes } from "react-native-screens";
 import Profile from "./components/Profile";
 import { AvatarContext } from "./context/Avatar";
 import {QuizzesType} from "./utilities/Quizzes"
+import { ResultsType } from "./components/ResultsPage";
 
 
 const Stack = createNativeStackNavigator<StackTypes>();
@@ -21,7 +22,7 @@ type Props = NativeStackScreenProps<StackTypes, 'ResultsPage'>
 type StackTypes = {
   Home: undefined;
   QuizPage: QuizzesType;
-  ResultsPage: {},
+  ResultsPage: ResultsType,
   Profile: {saveProfile:React.Dispatch<React.SetStateAction<string>>, preview:string}
 }
 

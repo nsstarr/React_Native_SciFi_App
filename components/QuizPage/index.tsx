@@ -13,6 +13,7 @@ import * as Progress from "react-native-progress";
 import { useFonts, Montserrat_400Regular, Montserrat_600SemiBold } from "@expo-google-fonts/dev";
 import { LinearGradient } from "expo-linear-gradient";
 import {QuizzesType} from "../../utilities/Quizzes"
+import { resultsData } from "../../utilities/QuizTemplate";
 
 
 type StackTypes = {
@@ -37,7 +38,7 @@ type Props = NativeStackScreenProps<StackTypes, "QuizPage">
 const QuizPage = ( {navigation, route}:Props) => {
 
   
-  let questionsData = route.params.questionsData
+ let {questionsData, resultsData, quizCardData, answerKey} = route.params
 
   const [answerTracker, setAnswerTracker] = useState({});
   const [test, setTest] = useState("");
@@ -115,7 +116,7 @@ const QuizPage = ( {navigation, route}:Props) => {
        <Text style={styles.finalPageText}>Your have reached the end of the quiz. If you are finished, press the button below to see your results</Text>
        </ImageBackground>
             <Pressable onPress={() => {
-              navigation.navigate("ResultsPage",answerTracker);
+              navigation.navigate("ResultsPage",{answerTracker,resultsData,answerKey});
             }} style={styles.button}>
               <Text style={styles.buttonText}>To results</Text>
             </Pressable>

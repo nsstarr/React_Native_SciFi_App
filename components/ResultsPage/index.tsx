@@ -10,7 +10,6 @@ import {
   Platform
 } from "react-native";
 import {useState} from 'react';
-import Header from "../Header";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import {
   useFonts,
@@ -18,17 +17,25 @@ import {
   Montserrat_600SemiBold,
 } from "@expo-google-fonts/dev";
 import { LinearGradient } from "expo-linear-gradient";
-import {answerKey, resultsData} from "../../utilities/QuestionsData"
 import HeaderNoProfile from '../HeaderNoProfile'
 
 type Answers = {
   [question: string]: string
 }
 
+export interface ResultsType {
+  answerTracker : Answers
+  answerKey: Answers
+  resultsData: Array<{
+    name:string 
+    image:any  
+    description: string
+  }>
+}
 type StackTypes = {
   Home: undefined;
   QuizPage: undefined;
-  ResultsPage: Answers;
+  ResultsPage: ResultsType;
 };
 
 type Props = NativeStackScreenProps<StackTypes, "ResultsPage">;
@@ -41,6 +48,8 @@ const ResultsPage = ({route, navigation }: Props) => {
 var scoreTitle = ''
 var scoreDescription = ''
 var scoreImage = ''
+
+  let {answerKey, answerTracker, resultsData} = route.params
 
   function scoring(answers:Answers,answerKey:Answers) {
     let score = 0
@@ -67,7 +76,7 @@ var scoreImage = ''
     
   }
 
-  const score = scoring(route.params,answerKey);
+  const score = scoring(answerTracker,answerKey);
   // const scoreTitle = "Jar Jar Binks";
   // const scoreDescription = "I’m... I’m so sorry, but the results don’t lie";
 
