@@ -4,19 +4,20 @@ import HeaderNoProfile from "../HeaderNoProfile";
 import QuizAnswer from "../QuizAnswer";
 import QuizQuestion from "../QuizQuestion";
 import QuizPicture from "../QuizPicture";
-import { questionsData } from "../../utilities/QuestionsData";
 import { GetImage } from "../../utilities/images";
 import RadioGroup, { RadioButtonProps } from "react-native-radio-buttons-group";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RouteProp } from '@react-navigation/native'
 import Swiper from "react-native-swiper";
 import * as Progress from "react-native-progress";
 import { useFonts, Montserrat_400Regular, Montserrat_600SemiBold } from "@expo-google-fonts/dev";
 import { LinearGradient } from "expo-linear-gradient";
+import {QuizzesType} from "../../utilities/Quizzes"
 
 
 type StackTypes = {
   Home: undefined;
-  QuizPage: undefined;
+  QuizPage: QuizzesType;
   ResultsPage: {};
 };
 
@@ -28,10 +29,16 @@ type PaginationProps = {
   index: number;
   total: number;
 };
-type Props = NativeStackScreenProps<StackTypes, "QuizPage">;
+type Props = NativeStackScreenProps<StackTypes, "QuizPage">
 
 
-const QuizPage = ({ route, navigation }: Props) => {
+
+
+const QuizPage = ( {navigation, route}:Props) => {
+
+  
+  let questionsData = route.params.questionsData
+
   const [answerTracker, setAnswerTracker] = useState({});
   const [test, setTest] = useState("");
 
@@ -50,7 +57,6 @@ const QuizPage = ({ route, navigation }: Props) => {
       ...answerTracker,
       [answer[0].name as string]: answer[0].value,
     });
-    console.log(radioButtonsArray);
   }
 
   function checkAnswers() {
@@ -82,7 +88,7 @@ const QuizPage = ({ route, navigation }: Props) => {
           question.answers!.forEach((answer,i) =>{
             question.answers![i].labelStyle = styles.answerText;
             question.answers![i].containerStyle = styles.answerBackground;
-            question.answers![i].color = "#EFA80C"
+            question.answers![i].color = "#EFA80C";
           })
           return (
             <View style={styles.screen} key={question.name}>
@@ -100,7 +106,7 @@ const QuizPage = ({ route, navigation }: Props) => {
           );
         }),
           <LinearGradient colors={["rgba(75,0,130,1)",
-        "rgba(75,0,130,0.64)"]} style={styles.finalPage}>
+        "rgba(75,0,130,0.64)"]} style={styles.finalPage} key="Final Page">
 
 
           <HeaderNoProfile />

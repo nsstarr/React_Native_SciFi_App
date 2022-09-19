@@ -17,7 +17,7 @@ interface Questions {
 
   export const quizCardData = {
     name: "Star Wars Quiz",
-    image: "../assets/Yoda.jpg"
+    image: require("../assets/Yoda.jpg")
   }
 
 export const questionsData: Array<Questions> = [
@@ -47,7 +47,7 @@ export const questionsData: Array<Questions> = [
   },
   {
     name: "image2",
-    image: require("../assets/StarWarsQuiz/Boba_Fett.jpeg"),
+    image: require("../assets/StarWarsQuiz/Boba_Fett.jpg"),
     description: "Boba Fett",
     question: "What type of armour does Boba Fett wear?",
     answers: [
@@ -59,7 +59,7 @@ export const questionsData: Array<Questions> = [
   },
   {
     name: "image3",
-    image: require("../assets/StarWarsQuiz/C£-PO.jpeg"),
+    image: require("../assets/StarWarsQuiz/C3-PO.jpg"),
     description: "C3-PO",
     question: "How many languages can C3-PO speak?",
     answers: [
@@ -167,7 +167,7 @@ export const questionsData: Array<Questions> = [
   },
   {
     name: "image12",
-    image: require("../assets/QuiGon.jpg"),
+    image: require("../assets/QuiGon.png"),
     description: "Qui Gon Jinn",
     question: "Who was Qui Gon Jinn's master?",
     answers: [

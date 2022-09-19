@@ -11,13 +11,15 @@ import {
   Montserrat_400Regular,
   Montserrat_700Bold
 } from "@expo-google-fonts/dev"; 
+import {quizzes, QuizzesType} from "../../utilities/Quizzes"
 
 
 type StackTypes = {
   Home: undefined;
-  QuizPage: undefined;
+  QuizPage: QuizzesType;
   ResultsPage: undefined
 }
+
 
 
 type Props = NativeStackScreenProps<StackTypes, 'Home'>
@@ -29,13 +31,12 @@ const HomeScreen = ({navigation}:Props) => {
 //   }
 
 
+  const [homeQuizzes, setHomeQuizzes] = useState<Array<QuizzesType>>(quizzes)
 
-
-  const avatar = GetImage(`image${0}`,images)
 
   const quizCard = GetImage(`image${0}`,questionsData)
 
-  console.log(avatar);
+
 
   let [fontsLoaded] = useFonts({
     Montserrat_400Regular,
@@ -65,22 +66,12 @@ const HomeScreen = ({navigation}:Props) => {
        <Text style = {style.quizText}>Your Quizzes</Text>
        </ImageBackground>
         <ScrollView>
-          {/* Add .map() later on when more quizzed are added */}
-          <QuizCategoryCard
-            name="Quiz 1"
-            navigation={navigation}
-            image={quizCard!}
-          />
-          <QuizCategoryCard
-            name="Quiz 2"
-            navigation={navigation}
-            image={quizCard!}
-          />
-          <QuizCategoryCard
-            name="Quiz 3"
-            navigation={navigation}
-            image={quizCard!}
-          />
+          {/* Add .map() later on when more quizzed are added */
+            quizzes.map((quiz) => {
+              let cardData = quiz.quizCardData
+              return <QuizCategoryCard key={cardData.name} name={cardData.name} image={cardData.image} navigation={navigation} data={quiz}/>
+            })
+          }
         </ScrollView>
       </View>
     </LinearGradient>

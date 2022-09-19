@@ -12,7 +12,8 @@ import {
   useFonts,
   Montserrat_400Regular,
   LobsterTwo_700Bold_Italic,
-} from "@expo-google-fonts/dev"; 
+} from "@expo-google-fonts/dev";
+import { QuizzesType } from "../../utilities/Quizzes"; 
 
 const QuizCategoryCard = (props: CategoryProps) => {
   let [fontsLoaded] = useFonts({
@@ -29,7 +30,7 @@ const QuizCategoryCard = (props: CategoryProps) => {
     <Pressable
       style={[styles.container]}
       onPress={() => {
-        props.navigation.navigate("QuizPage");
+        props.navigation.navigate("QuizPage",props.data);
       }}
     >
       <ImageBackground
@@ -52,6 +53,7 @@ type CategoryProps = {
   name: string;
   navigation: any;
   image: string;
+  data: QuizzesType
 };
 
 const styles = StyleSheet.create({
