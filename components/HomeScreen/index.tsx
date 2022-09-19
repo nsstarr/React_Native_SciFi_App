@@ -13,14 +13,11 @@ import {
 } from "@expo-google-fonts/dev"; 
 import {quizzes, QuizzesType} from "../../utilities/Quizzes"
 
-
 type StackTypes = {
   Home: undefined;
   QuizPage: QuizzesType;
   ResultsPage: undefined
 }
-
-
 
 type Props = NativeStackScreenProps<StackTypes, 'Home'>
 

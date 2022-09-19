@@ -16,7 +16,7 @@ interface Questions {
 
 export const quizCardData = {
   name: "Matrix",
-  image: require("../assets/Yoda.jpg")
+  image: require("../assets/MatrixQuiz/matrix-poster.jpg")
 }
 
 export const questionsData: Array<Questions> = [
@@ -189,7 +189,7 @@ export const questionsData: Array<Questions> = [
   },
   {
     name: "image10",
-    image: require("../assets/"),
+    image: require("../assets/MatrixQuiz/matrix-revolutions-end-fight.png"),
     description: "",
     question: "What does agent Smith say to Neo in the end fight of Matrix Revolutions?",
     answers: [
