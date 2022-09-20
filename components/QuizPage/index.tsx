@@ -23,7 +23,6 @@ import {
 } from "@expo-google-fonts/dev";
 import { LinearGradient } from "expo-linear-gradient";
 import { QuizzesType } from "../../utilities/Quizzes";
-import {RFPercentage} from "react-native-responsive-fontsize"
 
 type StackTypes = {
   Home: undefined;
@@ -119,7 +118,7 @@ const QuizPage = ({ navigation, route }: Props) => {
               style={{ width: "100%", height: 200, justifyContent: "center" }}
             >
               <Text style={styles.finalPageText}>
-                Your have reached the end of the quiz. If you are finished,
+                You have reached the end of the quiz. If you are finished,
                 press the button below to see your results
               </Text>
             </ImageBackground>

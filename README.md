@@ -13,7 +13,7 @@ Clone the project, cd in to the folder and run:
   git clone https://github.com/anastasia-starostina/React_Native_SciFi_App
   cd React_Native_SciFi_App
   npm install
-```
+``` 
 
 To start the app run:
 
@@ -50,11 +50,18 @@ See Optimisation section for more details.
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<img src='/assets/Screenshots/quizhome.jpg'>
+<img src='/assets/Screenshots/morpheus.jpg'>
+<img src='/assets/Screenshots/matrixquiz.jpg'>
+
 
 ## Demo
 
-Insert gif or link to demo
+Click on the photo below to see the demo of the app:
+
+<a href="https://www.youtube.com/watch?v=laizIkWFgTc" target="_blank">
+ <img src="./assets/Screenshots/quizhome.jpg" alt="Watch the Demo" width="840" height="480" border="10" />
+</a>
 
 ## Project Management
 
