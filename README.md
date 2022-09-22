@@ -82,7 +82,7 @@ We used yellow as a complementory colour for texts/highlights as according to so
 | Main Colour | ![#4b0082](https://via.placeholder.com/10/4b0082/4b0082.png) #4b0082 |
 | Highlight Colour | ![#EFA80C](https://via.placeholder.com/10/EFA80C/EFA80C.png) #EFA80C |
 | Text Colour | ![#ffffff](https://via.placeholder.com/10/ffffff/ffffff.png) #ffffff |
-| Shadow Colour | ![#000000](https://via.placeholder.com/10/00b48a/00b48a.png) #000000 |
+| Shadow Colour | ![#000000](https://via.placeholder.com/10/000000/000000.png) #000000 |
 | Gradient Colour | ![#4b0082a3](https://via.placeholder.com/10/4b0082a3/4b0082a3.png) #4b0082a3 |
 
 
@@ -110,6 +110,23 @@ We used yellow as a complementory colour for texts/highlights as according to so
 - [Expo Linear Gradient](https://www.npmjs.com/package/expo-linear-gradient)
 - [Expo Status Base](https://www.npmjs.com/package/expo-status-bar)
 - [React Native Radio Buttons](https://www.npmjs.com/package/react-native-radio-buttons-group)
+
+
+## License
+
+MIT License, see License.txt
+
+This project was made for purely educational purposes, with no intention to monetise it in its current state
+
+This app currently uses images from the Star Wars films, the Matrix films and Firefly tv series
+
+We do not claim ownership of these properties
+
+Star Wars and all of its intellectual properties belong to Disney
+
+The Matrix and all of its intellectual properties belong to Warner Brothers
+
+Firefly and all of its intellectual properties belong to 20th Century Studios
 
 ## Authors
 
