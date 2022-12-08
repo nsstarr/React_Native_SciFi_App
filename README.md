@@ -132,7 +132,7 @@ Firefly and all of its intellectual properties belong to 20th Century Studios
 
 - [@anastasia](https://www.github.com/anastasia-starostina)
 - [@christophe](https://www.github.com/St0neofFr33dom)
-- [@carloseam](https://www.github.com/carloseam)
+- [@carloseam](https://www.github.com/web-shuriken)
 
 
 ## Optimization
